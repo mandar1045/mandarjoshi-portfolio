@@ -1,0 +1,86 @@
+                                          Mandar Joshi
+            +91 7020212202     # mandarjoshi1045@gmail.com ï linkedin.com/in/mandar-joshi-0b951b28a §
+                                               github.com/mandar1045
+Profile
+Second-year Information Technology undergraduate at VIT Vellore with strong expertise in full-stack development, AI/ML
+integration, and cloud infrastructure. Experienced in building scalable enterprise applications using industry-standard
+technologies including Docker, Kubernetes, and AWS. Proficient in implementing CI/CD pipelines and deploying ML-driven
+automation solutions. Currently working as a Full Stack Developer Intern at Tense AI, actively seeking opportunities to
+contribute to production-grade software systems and drive innovation in software engineering, DevOps, and artificial
+intelligence.
+Education
+Vellore Institute of Technology                                                                      July 2024 – Present
+B.Tech in Information Technology                                                                            Vellore, India
+Technical Skills
+  Languages: Python, Java, JavaScript
+  Frameworks & Libraries: MERN Stack, PyTorch, NumPy, Pandas, Socket.io
+  AI/ML: Machine Learning, Deep Learning, PyTorch, Model Deployment
+  DevOps & Cloud: AWS, Docker, Kubernetes, CI/CD, Linux
+  Tools & Technologies: Git/GitHub, API Development, Web Development
+Experience
+Tense AI                                                                                                           Present
+Full Stack Developer Intern                                                                                        Ongoing
+   • Working on full-stack development projects utilizing modern web technologies and frameworks
+
+   • Contributing to the development and maintenance of web applications and backend systems
+
+   • Collaborating with the team to implement new features and optimize existing functionality
+
+
+Projects
+Continum — AI/ML Driven Tools Automation Platform | Python, Docker, Kubernetes, CI/CD                                   2025
+  • Developed a real-time AI/ML-driven automation platform for enterprise-level workflow optimization and intelligent task
+
+    management
+  • Implemented automated email analysis system with ML-powered classification, sentiment analysis, and intelligent draft
+
+    creation capabilities
+  • Built comprehensive tools automation framework integrating multiple third-party services and APIs for seamless
+
+    workflow automation
+  • Deployed containerized microservices architecture using Docker and orchestrated with Kubernetes for scalability and high
+
+    availability
+  • Established CI/CD pipelines for automated testing, building, and deployment, ensuring rapid iteration and reliable
+
+    production releases
+  • Designed scalable backend infrastructure with efficient data pipelines and real-time communication protocols for
+
+    enterprise deployment
+YoChat — Real-Time Chat Web Application | MERN Stack, Socket.io, JavaScript                                             2024
+  • Developed a full-stack web application enabling real-time user communication through chat rooms with support for both
+
+    group and private chats
+  • Implemented front-end and back-end logic for chat room creation, joining, and messaging with nickname-based access (no
+
+    sign-up/login required)
+  • Employed modern web technologies to create a seamless chat interface, reinforcing skills in web development, real-time
+
+    communication, and user-focused design
+  • Gained hands-on experience in designing web services that host multiple users, manage chat sessions, and deliver
+
+    real-time communication
+Autonomous API Version Migration System | Python, API Design, Automation                                                2024
+  • Developed an intelligent system to automate application migration across evolving API versions, reducing manual effort
+
+    and minimizing integration errors
+  • Implemented core features including API change detection, compatibility checks, automated mapping logic, and
+
+    validation workflows
+  • Significantly improved developer productivity by streamlining API upgrades and reducing technical debt in long-term
+
+    software development
+  • Strengthened understanding of backend development, API lifecycle management, and system automation
+Courses & Training
+Cohort 3.0 - Web Development | 100xDevs                                                              Dec 2024 – Present
+  • Completed web development training program gaining hands-on experience in building responsive and dynamic websites
+
+  • Developed understanding of core front-end and back-end technologies while collaborating on real-world-style projects
+
+
+Interests
+Deeply interested in Artificial Intelligence, Machine Learning, and Web3 technologies. I enjoy exploring how intelligent
+algorithms can automate decision-making, how machine learning models can uncover patterns in data, and how decentralized
+systems like blockchain can enable trustless, transparent applications. I actively follow advancements in these fields,
+experiment with small projects, and aim to integrate these technologies into real-world software solutions.
+
