@@ -67,8 +67,7 @@ export default function Navbar() {
                     <Linkedin size={20} />
                 </Link>
                 <Link
-                    href="/assets/resume.pdf"
-                    target="_blank"
+                    href="https://drive.google.com/file/d/14D60DcuBjqzsVc6QSNhtfTqiLQBdp_Mi/view?usp=drivesdk"
                     className="hidden sm:flex items-center gap-2 px-5 py-2 text-xs font-bold font-mono uppercase tracking-wider text-black bg-white rounded-full hover:bg-gray-200 transition-colors"
                 >
                     RESUME
