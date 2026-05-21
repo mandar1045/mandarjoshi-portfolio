@@ -2,9 +2,14 @@
 
 import { motion } from "framer-motion";
 import { resumeData } from "@/lib/data";
-import { Briefcase, Calendar, ChevronRight } from "lucide-react";
+import { Briefcase, Calendar, ChevronRight, ExternalLink, Github } from "lucide-react";
 
 export default function Experience() {
+    const totalOpenSourcePRs = resumeData.openSource.reduce(
+        (total, contribution) => total + contribution.pullRequests,
+        0
+    );
+
     return (
         <section id="experience" className="py-32 px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
@@ -71,6 +76,84 @@ export default function Experience() {
                         </motion.div>
                     ))}
                 </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-28"
+                >
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+                        <div>
+                            <h3 className="text-2xl md:text-3xl font-bold text-white">
+                                OPEN <span className="text-primary">SOURCE</span>
+                            </h3>
+                            <p className="text-gray-400 mt-2 max-w-3xl">
+                                Authored {totalOpenSourcePRs}+ pull requests across FOSSology, Kubernetes, Supabase, Cal.com, and PostHog, with additional issue reporting and follow-through from GitHub.
+                            </p>
+                        </div>
+
+                        <a
+                            href={resumeData.contact.github}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 self-start md:self-auto px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-mono text-primary hover:border-primary/40 hover:bg-primary/10 transition-colors"
+                        >
+                            <Github size={16} />
+                            <span>github.com/mandar1045</span>
+                        </a>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {resumeData.openSource.map((contribution, index) => (
+                            <motion.div
+                                key={contribution.repository}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.08 }}
+                                className="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_30px_-8px_rgba(0,243,255,0.18)]"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <div className="relative z-10">
+                                    <div className="flex items-start justify-between gap-4 mb-5">
+                                        <div>
+                                            <h4 className="text-2xl font-bold text-white">{contribution.name}</h4>
+                                            <p className="text-sm font-mono text-gray-500 mt-1">{contribution.repository}</p>
+                                        </div>
+
+                                        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-primary/90 whitespace-nowrap">
+                                            <span>{contribution.pullRequests} PRs</span>
+                                        </div>
+                                    </div>
+
+                                    <ul className="space-y-3 mb-6">
+                                        {contribution.highlights.map((highlight, highlightIndex) => (
+                                            <li
+                                                key={highlightIndex}
+                                                className="text-gray-400 flex gap-3 items-start text-sm leading-relaxed"
+                                            >
+                                                <ChevronRight className="text-primary/50 mt-1 flex-shrink-0" size={16} />
+                                                <span>{highlight}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <a
+                                        href={contribution.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex items-center gap-2 text-sm font-medium text-secondary hover:text-primary transition-colors"
+                                    >
+                                        <span>View authored PRs</span>
+                                        <ExternalLink size={15} />
+                                    </a>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
 
                 {/* GitHub Contribution Chart */}
                 <motion.div

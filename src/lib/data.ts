@@ -1,6 +1,6 @@
 export const resumeData = {
     name: "Mandar Joshi",
-    role: "Full Stack Developer Intern @ Tense AI",
+    role: "Software Engineer @ Tense AI",
     tagline: "Building scalable enterprise applications and AI/ML solutions.",
     summary: "Information Technology Undergraduate with a robust portfolio in scalable Full Stack Development and Cloud Infrastructure. Experienced in engineering production-grade systems utilizing Docker, Kubernetes, and AWS. Currently expanding expertise into Cybersecurity and DevSecOps to enhance application security and resilience. Focused on the convergence of AI/ML innovation, cloud scalability, and secure software architecture.",
     contact: {
@@ -28,9 +28,21 @@ export const resumeData = {
     experience: [
         {
             company: "Tense AI",
+            role: "Software Engineer",
+            date: "Current",
+            location: "Remote/Vellore",
+            description: [
+                "Building production-facing platform features across backend services, workflow automation, and AI-assisted product surfaces",
+                "Owning end-to-end engineering work from API design and service integration to frontend delivery, debugging, and reliability improvements",
+                "Improving system scalability with queue-driven workflows, better data flow design, and tighter coordination across product and engineering teams",
+                "Shipping fast-moving product iterations while keeping developer tooling, release quality, and user experience aligned"
+            ],
+        },
+        {
+            company: "Tense AI",
             role: "Full Stack Developer Intern",
-            date: "Present",
-            location: "Remote/Vellore", // derived or assumed
+            date: "Internship",
+            location: "Remote/Vellore",
             description: [
                 "Architecting scalable RESTful APIs and microservices using Node.js and Express, ensuring high performance and security for enterprise-grade applications",
                 "Developing dynamic, responsive user interfaces with Next.js and React, optimizing state management and component reusability for a seamless user experience",
@@ -38,6 +50,58 @@ export const resumeData = {
                 "Collaborating with cross-functional teams to integrate AI/ML models into web applications, enhancing product capabilities with intelligent automation"
             ],
         },
+    ],
+    openSource: [
+        {
+            name: "FOSSology",
+            repository: "fossology/fossology",
+            url: "https://github.com/fossology/fossology/pulls?q=author%3Amandar1045",
+            pullRequests: 22,
+            highlights: [
+                "Authored API, DAO, proxy, and package-metadata fixes covering null safety, status codes, import robustness, and scan stability.",
+                "Contributed Kubernetes-native deployment work spanning scheduler host routing, SSH worker pods, Helm packaging, Argo CD, and KEDA-based scaling."
+            ]
+        },
+        {
+            name: "Kubernetes",
+            repository: "kubernetes/kubernetes",
+            url: "https://github.com/kubernetes/kubernetes/pulls?q=author%3Amandar1045",
+            pullRequests: 2,
+            highlights: [
+                "Opened upstream fixes in `authn` to preserve TokenReview cancellation behavior without leaking request-scoped values.",
+                "Contributed `apimachinery` cleanup to ignore private fields during unstructured conversion and reduce surprising serialization behavior."
+            ]
+        },
+        {
+            name: "Supabase",
+            repository: "supabase/supabase",
+            url: "https://github.com/supabase/supabase/pulls?q=author%3Amandar1045",
+            pullRequests: 3,
+            highlights: [
+                "Worked on self-hosted reliability fixes including moving `Realtime DB_ENC_KEY` into environment configuration.",
+                "Contributed improvements around self-hosted observability exposure and clearer CSV import constraint error handling in Studio."
+            ]
+        },
+        {
+            name: "Cal.com",
+            repository: "calcom/cal.diy",
+            url: "https://github.com/calcom/cal.diy/pulls?q=author%3Amandar1045",
+            pullRequests: 2,
+            highlights: [
+                "Contributed booking-limit logic updates to correctly count overlapping bookings during scheduling checks.",
+                "Cleaned up docs, comments, and setup copy to improve the self-hosted developer experience in `cal.diy`."
+            ]
+        },
+        {
+            name: "PostHog",
+            repository: "PostHog/posthog",
+            url: "https://github.com/PostHog/posthog/pulls?q=author%3Amandar1045",
+            pullRequests: 3,
+            highlights: [
+                "Authored frontend/runtime fixes for stale lazy chunk recovery outside the scene loader.",
+                "Contributed fixes around sandbox MCP readonly header handling and cleanup of runtime copy and prompts."
+            ]
+        }
     ],
     projects: [
         {
