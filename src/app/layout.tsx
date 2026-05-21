@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 
 export const metadata: Metadata = {
-  title: "Mandar Joshi | Full Stack Developer",
-  description: "Portfolio of Mandar Joshi - Full Stack Developer & AI Enthusiast",
+  title: "Mandar Joshi | Software Engineer",
+  description: "Portfolio of Mandar Joshi, a software engineer building cloud-native products, full-stack systems, and open source contributions.",
 };
 
 export default function RootLayout({

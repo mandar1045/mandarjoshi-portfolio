@@ -115,7 +115,8 @@ export const resumeData = {
                 "Architected a scalable microservices environment using Docker and Kubernetes to orchestrate multiple concurrent AI agents with high availability",
                 "Implemented comprehensive CI/CD pipelines to automate testing and deployment, ensuring rapid and reliable delivery of new agent features"
             ],
-            video: "/videos/continum-demo.mp4"
+            video: "/videos/continum-demo.mp4",
+            link: "https://continum.online/"
         },
         {
             title: "Real Time Crowd Management System",

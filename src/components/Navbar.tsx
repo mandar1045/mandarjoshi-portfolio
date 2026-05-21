@@ -1,76 +1,82 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Terminal } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+
+const navigation = [
+    { name: "About", path: "/about" },
+    { name: "Skills", path: "/skills" },
+    { name: "Experience", path: "/experience" },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/#contact" },
+];
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
+        const handleScroll = () => setScrolled(window.scrollY > 16);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
         <motion.nav
-            initial={{ y: -100, opacity: 0 }}
+            initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.45 }}
             className={cn(
-                "fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300 w-[90%] max-w-5xl",
+                "fixed top-4 left-1/2 z-50 flex w-[92%] max-w-6xl -translate-x-1/2 items-center justify-between rounded-full px-5 py-3 md:px-7",
                 scrolled
-                    ? "glass-card bg-black/50 border-primary/20 shadow-[0_0_15px_rgba(0,243,255,0.1)]"
-                    : "bg-transparent border border-transparent"
+                    ? "border border-white/70 bg-white/78 shadow-[0_18px_40px_rgba(94,72,50,0.12)] backdrop-blur-xl"
+                    : "border border-white/50 bg-white/58 backdrop-blur-lg"
             )}
         >
-            <Link href="/" className="text-xl font-bold tracking-tighter flex items-center gap-2 text-white font-mono">
-                <Terminal size={20} className="text-primary" />
-                Mandar<span className="text-muted-foreground">_Joshi</span>
+            <Link href="/" className="flex items-center gap-3 text-primary">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/15 bg-primary text-sm font-semibold text-primary-foreground">
+                    MJ
+                </div>
+                <div>
+                    <p className="text-sm font-semibold tracking-tight text-foreground">Mandar Joshi</p>
+                    <p className="text-xs text-muted-foreground">Software Engineer</p>
+                </div>
             </Link>
 
-            <div className="hidden md:flex items-center gap-8">
-                {[
-                    { name: "About", path: "/about" },
-                    { name: "Skills", path: "/skills" },
-                    { name: "Experience", path: "/experience" },
-                    { name: "Projects", path: "/projects" },
-                    { name: "Contact", path: "/#contact" },
-                ].map((item) => (
+            <div className="hidden items-center gap-7 md:flex">
+                {navigation.map((item) => (
                     <Link
                         key={item.name}
                         href={item.path}
-                        className="text-sm font-mono font-medium text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+                        className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                     >
                         {item.name}
                     </Link>
                 ))}
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
                 <Link
                     href="https://github.com/mandar1045"
                     target="_blank"
-                    className="text-gray-500 hover:text-white transition-colors"
+                    className="rounded-full border border-transparent p-2 text-muted-foreground transition-colors hover:border-border hover:bg-white/60 hover:text-foreground"
                 >
-                    <Github size={20} />
+                    <Github size={18} />
                 </Link>
                 <Link
                     href="https://linkedin.com/in/mandar-joshi-0b951b28a"
                     target="_blank"
-                    className="text-gray-500 hover:text-white transition-colors"
+                    className="rounded-full border border-transparent p-2 text-muted-foreground transition-colors hover:border-border hover:bg-white/60 hover:text-foreground"
                 >
-                    <Linkedin size={20} />
+                    <Linkedin size={18} />
                 </Link>
                 <Link
                     href="https://drive.google.com/file/d/14D60DcuBjqzsVc6QSNhtfTqiLQBdp_Mi/view?usp=drivesdk"
-                    className="hidden sm:flex items-center gap-2 px-5 py-2 text-xs font-bold font-mono uppercase tracking-wider text-black bg-white rounded-full hover:bg-gray-200 transition-colors"
+                    className="hidden rounded-full border border-primary/15 bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90 sm:inline-flex"
                 >
-                    RESUME
+                    Resume
                 </Link>
             </div>
         </motion.nav>
