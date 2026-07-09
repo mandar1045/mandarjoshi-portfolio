@@ -98,11 +98,11 @@ type SkillCardProps = {
 
 const SkillCard = ({ title, icon: Icon, skills, accentColor = "primary" }: SkillCardProps) => (
     <div className="relative group w-full">
-        <div className="absolute -inset-0.5 rounded-[28px] bg-gradient-to-r from-secondary/20 to-[#d7c2a8]/20 opacity-35 blur-md transition duration-700 group-hover:opacity-55" />
+        <div className="absolute -inset-0.5 rounded-[28px] bg-gradient-to-r from-secondary/20 to-[#b8bec6]/20 opacity-35 blur-md transition duration-700 group-hover:opacity-55" />
 
         <div className="clip-path-cyberpunk-card relative border border-white/60 bg-white/75 p-2 backdrop-blur-xl">
-            <div className="relative flex flex-col overflow-hidden border border-white/50 bg-[#f5ede2]/80 p-8">
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(120,102,79,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(120,102,79,0.06)_1px,transparent_1px)] bg-[size:24px_24px]" />
+            <div className="relative flex flex-col overflow-hidden border border-white/50 bg-[#eef0ec]/80 p-8">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(50,54,62,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(50,54,62,0.045)_1px,transparent_1px)] bg-[size:24px_24px]" />
 
                 <h3 className="relative z-10 mb-8 flex items-center gap-4 text-2xl font-bold text-foreground">
                     <div className={`rounded border px-3 py-3 ${accentColor === "primary"

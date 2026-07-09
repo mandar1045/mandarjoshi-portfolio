@@ -17,19 +17,19 @@ export default function Profile() {
                     viewport={{ once: true }}
                     className="relative group w-full"
                 >
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary/25 to-[#d8c5ae]/25 opacity-40 blur-md transition duration-700 group-hover:opacity-60" />
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary/25 to-[#9aa3af]/25 opacity-40 blur-md transition duration-700 group-hover:opacity-60" />
 
                     <div className="clip-path-cyberpunk-card relative border border-white/60 bg-white/75 p-2 backdrop-blur-xl">
-                        <div className="relative overflow-hidden border border-white/50 bg-[#f5ede2]/80 p-8">
-                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(120,102,79,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(120,102,79,0.06)_1px,transparent_1px)] bg-[size:32px_32px]" />
+                        <div className="relative overflow-hidden border border-white/50 bg-[#eef0ec]/80 p-8">
+                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(50,54,62,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(50,54,62,0.045)_1px,transparent_1px)] bg-[size:32px_32px]" />
                             <div className="animate-scan pointer-events-none absolute top-0 left-0 h-px w-full bg-secondary/25 opacity-50" />
 
                             <div className="relative z-10">
                                 <div className="mb-8 flex flex-col items-start justify-between gap-6 border-b border-border/70 pb-8 md:flex-row md:items-center">
                                     <div>
                                         <div className="mb-3 flex items-center gap-3">
-                                            <div className="h-2 w-2 rounded-full bg-[#8b9d7e] shadow-[0_0_0_6px_rgba(139,157,126,0.14)]" />
-                                            <span className="font-mono text-xs uppercase tracking-widest text-[#7b8b6d]">
+                                            <div className="h-2 w-2 rounded-full bg-[#57996b] shadow-[0_0_0_6px_rgba(87,153,107,0.16)]" />
+                                            <span className="font-mono text-xs uppercase tracking-widest text-[#4d8a60]">
                                                 Identity_Confirmed
                                             </span>
                                             <span className="hidden font-mono text-xs text-muted-foreground md:inline">|</span>
@@ -46,7 +46,7 @@ export default function Profile() {
                                     <div className="flex gap-4">
                                         <div className="min-w-[120px] border border-white/60 bg-white/65 p-4 text-center">
                                             <div className="mb-1 text-[10px] font-mono uppercase text-muted-foreground">Status</div>
-                                            <div className="flex items-center justify-center gap-2 text-sm font-bold tracking-wide text-[#7b8b6d]">
+                                            <div className="flex items-center justify-center gap-2 text-sm font-bold tracking-wide text-[#4d8a60]">
                                                 <Activity size={14} /> ACTIVE
                                             </div>
                                         </div>
@@ -78,14 +78,14 @@ export default function Profile() {
                                             <div className="font-mono text-xl text-foreground">
                                                 L-5 <span className="text-xs text-muted-foreground">/ 8</span>
                                             </div>
-                                            <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-[#dfd3c4]">
+                                            <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-[#e0ded6]">
                                                 <div className="h-full w-[65%] bg-secondary" />
                                             </div>
                                         </div>
                                         <div className="rounded border border-dashed border-border bg-white/55 p-4 transition-colors hover:border-secondary/35">
                                             <div className="mb-1 text-xs uppercase text-muted-foreground">Specialization</div>
-                                            <div className="font-mono text-base text-secondary">FULL_STACK_DEV</div>
-                                            <p className="mt-1 text-[10px] text-muted-foreground">Node.js, React, Cloud Infra</p>
+                                            <div className="font-mono text-base text-secondary">SCALABLE_SYSTEMS</div>
+                                            <p className="mt-1 text-[10px] text-muted-foreground">Go, Distributed Systems, Cloud</p>
                                         </div>
                                     </div>
                                 </div>
@@ -100,10 +100,10 @@ export default function Profile() {
                     viewport={{ once: true }}
                     className="relative group w-full"
                 >
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#d9c8b1]/25 to-secondary/20 opacity-40 blur-md transition duration-700 group-hover:opacity-60" />
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#b8bec6]/25 to-secondary/20 opacity-40 blur-md transition duration-700 group-hover:opacity-60" />
 
                     <div className="clip-path-cyberpunk-card relative border border-white/60 bg-white/75 p-2 backdrop-blur-xl">
-                        <div className="relative flex min-h-[400px] flex-col overflow-hidden border border-white/50 bg-[#f5ede2]/80 p-6 md:p-8">
+                        <div className="relative flex min-h-[400px] flex-col overflow-hidden border border-white/50 bg-[#eef0ec]/80 p-6 md:p-8">
                             <div className="pointer-events-none absolute top-0 right-0 p-4 opacity-10">
                                 <Cpu size={100} />
                             </div>
@@ -129,7 +129,7 @@ export default function Profile() {
                                         {resumeData.education.map((edu, i) => (
                                             <div
                                                 key={i}
-                                                className="group relative border border-white/70 bg-white/65 p-6 transition-all hover:border-secondary/40 hover:shadow-[0_10px_24px_rgba(120,102,79,0.08)]"
+                                                className="group relative border border-white/70 bg-white/65 p-6 transition-all hover:border-secondary/40 hover:shadow-[0_10px_24px_rgba(28,32,40,0.10)]"
                                             >
                                                 <div className="absolute top-0 right-0 rounded-bl bg-white/80 px-2 py-1 font-mono text-[10px] text-muted-foreground">
                                                     ACADEMIC

@@ -1,8 +1,8 @@
 export const resumeData = {
     name: "Mandar Joshi",
-    role: "Software Engineer @ Tense AI",
-    tagline: "Building scalable enterprise applications and AI/ML solutions.",
-    summary: "Information Technology Undergraduate with a robust portfolio in scalable Full Stack Development and Cloud Infrastructure. Experienced in engineering production-grade systems utilizing Docker, Kubernetes, and AWS. Currently expanding expertise into Cybersecurity and DevSecOps to enhance application security and resilience. Focused on the convergence of AI/ML innovation, cloud scalability, and secure software architecture.",
+    role: "Scalable Systems Software Engineer",
+    tagline: "Building scalable, distributed systems and cloud-native infrastructure.",
+    summary: "Software engineer specializing in scalable, distributed systems and cloud-native infrastructure. Experienced in architecting production-grade platforms with Go, gRPC, Kafka, Docker, Kubernetes, and AWS — spanning event-driven microservices, secure data layers, and full observability. Focused on the convergence of distributed systems design, cloud scalability, and reliable software architecture.",
     contact: {
         email: "mandarjoshi1045@gmail.com",
         phone: "+91 7020212202",
@@ -27,9 +27,22 @@ export const resumeData = {
     },
     experience: [
         {
+            company: "Xnotch Itech",
+            role: "Full Stack Developer",
+            date: "2026 – Present",
+            location: "Remote",
+            context: "Renew Care Plus",
+            description: [
+                "Engineering complex, security-hardened database management for Renew Care Plus, a B2B healthcare platform, with encrypted-at-rest storage, role-based access controls, and audit-ready data models for sensitive records",
+                "Building B2B dashboard analytics that surface real-time business metrics, cohort reporting, and drill-down insights for enterprise clients",
+                "Designing secure, high-performance query layers and schema migrations that safeguard sensitive data while keeping analytics responsive at scale",
+                "Owning full-stack delivery end to end — from database schema and API contracts to the interactive analytics UI"
+            ],
+        },
+        {
             company: "Tense AI",
             role: "Software Engineer",
-            date: "Current",
+            date: "Mar 2026 – Jun 2026",
             location: "Remote/Vellore",
             description: [
                 "Building production-facing platform features across backend services, workflow automation, and AI-assisted product surfaces",
@@ -41,7 +54,7 @@ export const resumeData = {
         {
             company: "Tense AI",
             role: "Full Stack Developer Intern",
-            date: "Internship",
+            date: "Dec 2025 – Feb 2026",
             location: "Remote/Vellore",
             description: [
                 "Architecting scalable RESTful APIs and microservices using Node.js and Express, ensuring high performance and security for enterprise-grade applications",
@@ -104,6 +117,23 @@ export const resumeData = {
         }
     ],
     projects: [
+        {
+            category: "startup",
+            title: "Resync",
+            subtitle: "UPI Autopay Recovery Platform",
+            tech: ["Go", "gRPC / Protobuf", "Kafka", "Redis", "PostgreSQL", "Docker", "AWS"],
+            date: "2026",
+            points: [
+                "Architected a 9-microservice payment-recovery platform in Go with gRPC/Protobuf service contracts — the recovery layer for India's UPI Autopay ecosystem, executing smart retries on merchants' own gateway accounts with success-based pricing (3% of recovered revenue)",
+                "Designed a UPI failure-code classifier that normalizes 30+ NPCI/Razorpay/Cashfree codes into 8 internal categories, routing to 4 context-aware retry strategies (salary-day, exponential backoff, next-day, and hard-fail cancellation)",
+                "Orchestrated an event-driven pipeline with Apache Kafka (Redpanda), Redis SETNX distributed locks, and structured idempotency keys — guaranteeing zero double-charges even under concurrent cron workers",
+                "Shipped npm- and pip-published Node.js & Python SDKs with HMAC-SHA256 webhook verification, plus a Next.js merchant dashboard with real-time recovery analytics and gateway onboarding",
+                "Deployed a full observability stack (Prometheus, Grafana, Alertmanager) across ~20MB distroless Docker images on Oracle Cloud ARM with Caddy auto-HTTPS and Terraform-provisioned AWS ECS Fargate"
+            ],
+            video: "/videos/resync-demo.mp4",
+            link: "https://resync.biz",
+            github: "https://github.com/mandar1045/Resync"
+        },
         {
             title: "Continum",
             subtitle: "AI/ML Driven Tools Automation Platform",

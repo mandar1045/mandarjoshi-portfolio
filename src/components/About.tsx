@@ -31,10 +31,10 @@ export default function About() {
                     <div className="glass-panel group relative overflow-hidden rounded-2xl border border-white/60 p-1">
                         <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-secondary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                        <div className="border-b border-border/60 bg-[#eee4d7]/70 px-4 py-3 flex items-center gap-2">
-                            <div className="h-3 w-3 rounded-full bg-[#d8b89b]" />
-                            <div className="h-3 w-3 rounded-full bg-[#d7c3a3]" />
-                            <div className="h-3 w-3 rounded-full bg-[#b8c8b2]" />
+                        <div className="border-b border-border/60 bg-[#eae9e3]/70 px-4 py-3 flex items-center gap-2">
+                            <div className="h-3 w-3 rounded-full bg-[#ec6a5e]" />
+                            <div className="h-3 w-3 rounded-full bg-[#f4bf50]" />
+                            <div className="h-3 w-3 rounded-full bg-[#61c554]" />
                             <div className="ml-auto font-mono text-xs text-muted-foreground">user@mandar-dev:~</div>
                         </div>
 

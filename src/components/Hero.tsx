@@ -8,7 +8,7 @@ import Typewriter from "typewriter-effect";
 export default function Hero() {
     return (
         <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-[#e9dfd1]/70" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-[#e5e3dc]/70" />
 
             <div className="container relative z-10 mx-auto flex flex-col items-center px-6 text-center">
                 <motion.div
@@ -17,7 +17,7 @@ export default function Hero() {
                     transition={{ duration: 0.5 }}
                     className="mb-8 inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-white/80 px-4 py-1.5 backdrop-blur-md"
                 >
-                    <span className="h-2 w-2 rounded-full bg-secondary shadow-[0_0_0_4px_rgba(158,132,106,0.12)]" />
+                    <span className="h-2 w-2 rounded-full bg-secondary shadow-[0_0_0_4px_rgba(75,85,99,0.14)]" />
                     <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-secondary">
                         System Operational
                     </span>
@@ -47,11 +47,11 @@ export default function Hero() {
                     <Typewriter
                         options={{
                             strings: [
-                                "Architecting Digital Realities",
-                                "Full Stack Engineer",
-                                "MERN Stack Developer",
-                                "AI/ML Enthusiast",
-                                "Cybersecurity Enthusiast"
+                                "Scalable Systems Engineer",
+                                "Distributed Systems Design",
+                                "Backend & Cloud Infrastructure",
+                                "Event-Driven Architecture",
+                                "Go · TypeScript · Kubernetes"
                             ],
                             autoStart: true,
                             loop: true,

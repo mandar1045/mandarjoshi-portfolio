@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { resumeData } from "@/lib/data";
-import { Briefcase, Calendar, ChevronRight, ExternalLink, Github } from "lucide-react";
+import { Briefcase, Calendar, ChevronRight, ExternalLink, Github, MapPin, Sparkles } from "lucide-react";
 
 export default function Experience() {
     const totalOpenSourcePRs = resumeData.openSource.reduce(
@@ -37,20 +37,26 @@ export default function Experience() {
                             transition={{ delay: index * 0.16 }}
                             className="group relative pl-8 md:pl-12"
                         >
-                            <div className="absolute -left-[5px] top-10 z-10 h-3 w-3 rounded-full border border-secondary/35 bg-[#f8f2ea] shadow-[0_0_0_6px_rgba(158,132,106,0.08)] transition-all duration-300 group-hover:scale-110 group-hover:bg-white" />
+                            <div className="absolute -left-[5px] top-10 z-10 h-3 w-3 rounded-full border border-secondary/40 bg-[#f2f1ec] shadow-[0_0_0_6px_rgba(75,85,99,0.10)] transition-all duration-300 group-hover:scale-110 group-hover:bg-white" />
                             <div className="absolute -left-[35px] top-10 h-px w-8 bg-secondary/20 transition-colors group-hover:bg-secondary/35" />
 
-                            <div className="glass-card group relative overflow-hidden rounded-3xl border border-white/60 p-10 transition-all duration-500 hover:border-secondary/35 hover:shadow-[0_18px_40px_rgba(120,102,79,0.10)]">
+                            <div className="glass-card group relative overflow-hidden rounded-3xl border border-white/60 p-10 transition-all duration-500 hover:border-secondary/35 hover:shadow-[0_18px_40px_rgba(28,32,40,0.12)]">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                                 <div className="relative z-10">
                                     <div className="mb-6 flex flex-col">
-                                        <div className="mb-2 flex items-center justify-between">
+                                        <div className="mb-2 flex flex-wrap items-center gap-3">
                                             <h3 className="text-3xl font-bold font-sans tracking-tight text-foreground transition-all group-hover:text-secondary">
                                                 {exp.role}
                                             </h3>
+                                            {"context" in exp && exp.context && (
+                                                <span className="inline-flex items-center gap-1.5 rounded-full border border-secondary/30 bg-secondary/5 px-3 py-1 text-xs font-mono font-medium uppercase tracking-wide text-secondary">
+                                                    <Sparkles size={12} />
+                                                    {exp.context}
+                                                </span>
+                                            )}
                                         </div>
-                                        <div className="flex items-center gap-3 text-lg font-medium text-muted-foreground">
+                                        <div className="flex flex-wrap items-center gap-3 text-lg font-medium text-muted-foreground">
                                             <span className="text-secondary">@</span>
                                             <span>{exp.company}</span>
                                             <span className="h-1.5 w-1.5 rounded-full bg-border" />
@@ -58,6 +64,12 @@ export default function Experience() {
                                                 <Calendar size={12} />
                                                 <span>{exp.date}</span>
                                             </div>
+                                            {exp.location && (
+                                                <div className="flex items-center gap-1.5 rounded-full border border-border bg-white/75 px-3 py-1 text-xs font-mono text-secondary">
+                                                    <MapPin size={12} />
+                                                    <span>{exp.location}</span>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 
@@ -116,7 +128,7 @@ export default function Experience() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.08 }}
-                                className="glass-card group relative overflow-hidden rounded-3xl border border-white/60 p-8 transition-all duration-500 hover:border-secondary/30 hover:shadow-[0_16px_34px_rgba(120,102,79,0.08)]"
+                                className="glass-card group relative overflow-hidden rounded-3xl border border-white/60 p-8 transition-all duration-500 hover:border-secondary/30 hover:shadow-[0_16px_34px_rgba(28,32,40,0.10)]"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -178,7 +190,7 @@ export default function Experience() {
                         <div className="relative z-10 overflow-x-auto pb-4">
                             <div className="flex min-w-[800px] justify-center">
                                 <img
-                                    src="https://ghchart.rshah.org/196127/mandar1045"
+                                    src="https://ghchart.rshah.org/4b5563/mandar1045"
                                     alt="Mandar's GitHub Contribution Chart"
                                     className="h-auto w-full"
                                 />

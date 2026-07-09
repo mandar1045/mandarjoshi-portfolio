@@ -9,7 +9,7 @@ import { SiLinkedin, SiGithub, SiGmail, SiInstagram } from "react-icons/si";
 export default function Contact() {
     return (
         <section id="contact" className="relative z-10 overflow-hidden px-6 py-40">
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#efe4d6]/50 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#e6e4dc]/50 via-transparent to-transparent" />
 
             <div className="relative mx-auto max-w-5xl text-center">
                 <motion.div
