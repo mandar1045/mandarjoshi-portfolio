@@ -9,7 +9,8 @@ import {
     SiTailwindcss, SiDocker, SiKubernetes, SiAmazon, SiGit, SiLinux,
     SiPytorch, SiPandas, SiSocketdotio, SiExpress, SiFastapi, SiTensorflow,
     SiKeras, SiOpencv, SiHuggingface, SiGithubactions, SiMongodb, SiPostgresql,
-    SiRedis, SiFigma, SiPostman, SiGnubash, SiCplusplus, SiMysql
+    SiRedis, SiFigma, SiPostman, SiGnubash, SiCplusplus, SiMysql,
+    SiElixir, SiGo, SiPhp, SiNginx, SiCaddy
 } from "react-icons/si";
 
 type SkillIconProps = {
@@ -61,13 +62,18 @@ const getIcon = (name: string) => {
         "GitHub Actions": { icon: SiGithubactions, color: "#5C7FAE" },
         "CI/CD": { icon: Box, color: "#5C7FAE" },
 
+        "Elixir": { icon: SiElixir, color: "#4E2A8E" },
+        "Go": { icon: SiGo, color: "#00ADD8" },
+        "PHP": { icon: SiPhp, color: "#777BB4" },
+        "C": { icon: Code, color: "#555555" }, // using Code since there is no standard C icon in some sets or SiC doesn't exist
+        "Nginx": { icon: SiNginx, color: "#009639" },
+        "Caddy": { icon: SiCaddy, color: "#00ADD8" },
+
         "Git": { icon: SiGit, color: "#BE6F58" },
         "GitHub": { icon: SiGit, color: "#5A514B" },
         "Postman": { icon: SiPostman, color: "#C87653" },
-        "MongoDB": { icon: SiMongodb, color: "#62835D" },
         "PostgreSQL": { icon: SiPostgresql, color: "#5A7398" },
         "Redis": { icon: SiRedis, color: "#B86161" },
-        "Figma": { icon: SiFigma, color: "#C47759" },
     };
 
     const item = iconMap[name] || { icon: Code, color: "#7A5B45" };
@@ -151,24 +157,20 @@ export default function Skills() {
                         </div>
                     </div>
                     <h2 className="text-4xl font-black tracking-tighter text-foreground md:text-6xl">
-                        TECHNICAL <span className="text-gradient">ARSENAL</span>
+                        TECHNICAL <span className="text-gradient">EXPERTISE</span>
                     </h2>
                     <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
-                        SYSTEM_CAPABILITIES_LOADED
+                        Core Competencies & Technologies
                     </p>
                 </motion.div>
 
                 <div className="flex flex-col gap-12">
                     <motion.div variants={cardVariants} className="w-full">
-                        <SkillCard title="STACK_PROTOCOL" icon={Terminal} skills={[...skills.languages, ...skills.frameworks]} accentColor="primary" />
+                        <SkillCard title="LANGUAGES & FRAMEWORKS" icon={Terminal} skills={[...skills.languages, ...skills.frameworks]} accentColor="primary" />
                     </motion.div>
 
                     <motion.div variants={cardVariants} className="w-full">
                         <SkillCard title="INFRASTRUCTURE & TOOLS" icon={Server} skills={[...skills.tools, ...skills.devops]} accentColor="secondary" />
-                    </motion.div>
-
-                    <motion.div variants={cardVariants} className="w-full">
-                        <SkillCard title="AI & INTELLIGENCE" icon={Cpu} skills={skills.ai_ml || []} accentColor="primary" />
                     </motion.div>
                 </div>
             </motion.div>

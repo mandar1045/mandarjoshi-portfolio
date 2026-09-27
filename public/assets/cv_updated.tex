@@ -1,0 +1,293 @@
+%-------------------------
+% Curriculum Vitae — Mandar Joshi
+%-------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{microtype}
+\input{glyphtounicode}
+
+\geometry{top=0.5in, bottom=0.5in, left=0.6in, right=0.6in}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\pdfgentounicode=1
+
+% Global itemize settings
+\setlist[itemize]{leftmargin=1.4em, label=\textbullet, itemsep=1pt, topsep=2pt, parsep=0pt, partopsep=0pt}
+
+% Section formatting -- centered, bold, with lines
+\titleformat{\section}[block]
+  {\normalfont\large\bfseries\centering}
+  {}{0em}{}[{\titlerule[0.5pt]}]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+% Subsection formatting
+\titleformat{\subsection}[block]
+  {\normalfont\normalsize\bfseries}
+  {}{0em}{}
+\titlespacing{\subsection}{0pt}{6pt}{2pt}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+  {\Huge \textbf{MANDAR JOSHI}} \\[6pt]
+  {\normalsize
+  \textbf{Phone:}\ +91 70202 12202 \enspace\textbar{}\enspace
+  \textbf{Email:}\ \href{mailto:mandarjoshi1045@gmail.com}{\textcolor{blue}{mandarjoshi1045@gmail.com}} \\[4pt]
+  \textbf{LinkedIn:}\ \href{https://linkedin.com/in/mandar-joshi-0b951b28a}{\textcolor{blue}{linkedin.com/in/mandar-joshi-0b951b28a}}
+  \enspace\textbar{}\enspace
+  \textbf{GitHub:}\ \href{https://github.com/mandar1045}{\textcolor{blue}{github.com/mandar1045}} \\[4pt]
+  \textbf{Portfolio:}\ \href{https://mandarjoshi.me}{\textcolor{blue}{mandarjoshi.me}}
+  }
+\end{center}
+
+\vspace{-2pt}
+\noindent\rule{\textwidth}{0.5pt}
+\vspace{2pt}
+
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{PROFESSIONAL SUMMARY}
+
+\noindent
+Software Engineer and active Open Source Contributor specializing in distributed systems, backend infrastructure, and API reliability. Core contributor to massive open-source ecosystems including \textbf{Supabase} (securing self-hosted Realtime infrastructure), \textbf{FOSSology} (resolving critical C/PHP memory bugs), and \textbf{Kubernetes} (CNCF). Architected production-grade microservice platforms in Go and TypeScript handling enterprise workflows, driven by a deep passion for building secure, scalable software in the open.
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+
+\noindent
+\textbf{Vellore Institute of Technology} \hfill Vellore, India \\
+\textit{Bachelor of Technology in Information Technology} \hfill Jul.\ 2024 -- May 2028 (Expected)
+
+\vspace{4pt}
+\noindent
+\textbf{Relevant Coursework:} \\
+Data Structures \& Algorithms, Database Management Systems, Operating Systems, Computer Networks, Object-Oriented Programming, Software Engineering, Machine Learning, Cloud Computing, Discrete Mathematics, Linear Algebra
+
+
+%-----------TECHNICAL SKILLS-----------
+\section{TECHNICAL SKILLS}
+
+\vspace{2pt}
+\noindent
+\textbf{Programming Languages:} Go, TypeScript, C, PHP, Elixir, Python, SQL, Bash, JavaScript \\[3pt]
+\textbf{Backend \& Systems:} gRPC/Protobuf, Node.js, Express.js, FastAPI, REST APIs \\[3pt]
+\textbf{Infrastructure \& DevOps:} Docker, Kubernetes, Linux, Nginx, Caddy, Terraform, GitHub Actions, CI/CD \\[3pt]
+\textbf{Databases:} PostgreSQL, Redis, MongoDB, Supabase; Schema Design, Query Optimization \\[3pt]
+\textbf{Messaging \& Streaming:} Apache Kafka (Redpanda), Redis Pub/Sub, Event-Driven Architecture \\[3pt]
+\textbf{Cloud Platforms:} AWS (EC2, S3, ECS Fargate), Oracle Cloud \\[3pt]
+\textbf{Developer Tools \& Security:} Git/GitHub, Postman, JWT Authentication, HMAC-SHA256, AES-256-GCM \\[3pt]
+\textbf{Concepts:} Microservices Architecture, Distributed Systems, High Availability, Idempotency, Rate Limiting
+
+
+%-----------WORK EXPERIENCE & OPEN SOURCE-----------
+\section{WORK EXPERIENCE \& OPEN SOURCE}
+
+\subsection{Open Source Contributor \textbar{} Supabase Inc. \hfill \normalfont\textit{8 Merged PRs, 9 Open PRs, 5 Issues}}
+
+\noindent
+\textit{GitHub:} \href{https://github.com/supabase/supabase/pulls?q=author\%3Amandar1045}{\textcolor{blue}{\underline{github.com/supabase/supabase}}}
+
+\vspace{4pt}
+\noindent\textbf{Key Contributions \& Pull Requests:}
+\begin{itemize}
+  \item \href{https://github.com/supabase/realtime/pull/2231}{\textcolor{blue}{\textbf{supabase/realtime\#2231: Fix WAL sender test flakes}}} --- Fixed \texttt{max\_wal\_senders} test flakes caused by missing \texttt{public.test} table in Realtime.
+  \item \href{https://github.com/supabase/realtime/pull/2228}{\textcolor{blue}{\textbf{supabase/realtime\#2228: Consolidate extension tests}}} --- Refactored and consolidated extension tests into one canonical location mirroring \texttt{lib/}.
+  \item \href{https://github.com/supabase/realtime/pull/2222}{\textcolor{blue}{\textbf{supabase/realtime\#2222: Suppress Ranch connection logs}}} --- Added tests to verify that Ranch killed connection logs are properly suppressed in the tracker.
+  \item \href{https://github.com/supabase/realtime/pull/2174}{\textcolor{blue}{\textbf{supabase/realtime\#2174: Fix emoji slicing in fuzzy search}}} --- Prevented emoji surrogate pair slicing bugs in the Realtime inspector's fuzzy search feature.
+  \item \href{https://github.com/supabase/realtime/pull/2167}{\textcolor{blue}{\textbf{supabase/realtime\#2167: Fix Ranch charlist log filter}}} --- Fixed character list handling in the Ranch log filter to prevent logging errors.
+  \item \href{https://github.com/supabase/supabase/pull/50306}{\textcolor{blue}{\textbf{supabase/supabase\#50306: Proxy .well-known auth route}}} --- Proxied \texttt{/.well-known/*} and \texttt{/pg/*} routes to the API gateway in Caddy/Nginx configs to fix 404s.
+  \item \href{https://github.com/supabase/supabase/pull/46021}{\textcolor{blue}{\textbf{supabase/supabase\#46021: Secure Realtime encryption key}}} --- Moved hardcoded Realtime \texttt{DB\_ENC\_KEY} to a configurable \texttt{.env} variable for self-hosted instances.
+  \item \href{https://github.com/supabase/server/pull/160}{\textcolor{blue}{\textbf{supabase/server\#160: Validate JWT audience \& issuer}}} --- Added strict validation for JWT audience and issuer fields to improve authentication security.
+\end{itemize}
+
+\vspace{4pt}
+\subsection{Open Source Contributor \textbar{} FOSSology (Linux Foundation) \hfill \normalfont\textit{8 Merged PRs, 1 Open PR, 3 Issues}}
+
+\noindent
+\textit{GitHub:} \href{https://github.com/fossology/fossology/pulls?q=author\%3Amandar1045}{\textcolor{blue}{\underline{github.com/fossology/fossology}}}
+
+\vspace{4pt}
+\noindent\textbf{Key Contributions \& Pull Requests:}
+\begin{itemize}
+  \item \href{https://github.com/fossology/fossology/pull/3605}{\textcolor{blue}{\textbf{fossology/fossology\#3605: Correct typos in user-facing messages}}} --- Fixed typos across multiple UI components and user-facing CLI messages for better clarity.
+  \item \href{https://github.com/fossology/fossology/pull/3555}{\textcolor{blue}{\textbf{fossology/fossology\#3555: Fix pkgagent memory \& encoding bugs}}} --- Resolved unsafe \texttt{strcpy()}, NULL-before-free crashes, and HTML double-encoding in package info.
+  \item \href{https://github.com/fossology/fossology/pull/3554}{\textcolor{blue}{\textbf{fossology/fossology\#3554: Fix libfossrepo path string lengths}}} --- Fixed \texttt{strlen()} misuse in tracking extension length during temporary path generation.
+  \item \href{https://github.com/fossology/fossology/pull/3513}{\textcolor{blue}{\textbf{fossology/fossology\#3513: Fix DAO SQL bugs \& null safety}}} --- Fixed SQL formatting bugs, array \texttt{intval()} misuse, and added full test coverage for License DAOs.
+  \item \href{https://github.com/fossology/fossology/pull/3477}{\textcolor{blue}{\textbf{fossology/fossology\#3477: Fix GroupController HTTP status codes}}} --- Corrected null safety gaps and updated REST conventions (200 $\rightarrow$ 201/202) in member API endpoints.
+  \item \href{https://github.com/fossology/fossology/pull/3456}{\textcolor{blue}{\textbf{fossology/fossology\#3456: Fix N+1 queries \& API crashes}}} --- Eliminated redundant DB lookups and prevented TypeErrors on synthetic license entries in the \texttt{/scanned} API.
+  \item \href{https://github.com/fossology/fossology/pull/3443}{\textcolor{blue}{\textbf{fossology/fossology\#3443: Update deprecated PHPUnit assertions}}} --- Replaced deprecated \texttt{assertRegExp} calls across the test suite for modern PHPUnit compatibility.
+  \item \href{https://github.com/fossology/fossology/pull/3438}{\textcolor{blue}{\textbf{fossology/fossology\#3438: Fix API null safety \& misleading errors}}} --- Resolved unhandled null states, corrected status codes, and fixed typos in error payloads.
+\end{itemize}
+
+\vspace{4pt}
+\subsection{Software Developer Intern \textbar{} Locara Labs \hfill \normalfont\textit{Aug.\ 2026 -- Present}}
+
+\begin{itemize}
+  \item Building production web and mobile applications for large-scale egocentric video datasets that power the next generation of robotics and embodied AI systems.
+  \item Developing full-stack features and infrastructure across a modern stack including Next.js, React Native, Supabase, and Cloudflare.
+  \item Building and supporting robust data pipelines and quality-assurance tooling to streamline high-throughput video dataset workflows for field teams and clients.
+  \item Owning end-to-end feature delivery, participating in code reviews, and debugging production issues for internal users directly in production.
+\end{itemize}
+
+\vspace{4pt}
+\subsection{Software Engineer Intern \textbar{} Tense AI \hfill \normalfont\textit{Dec.\ 2025 -- Jun.\ 2026}}
+
+\begin{itemize}
+  \item Architected scalable RESTful APIs and microservices using Node.js and Express, ensuring high performance and security for enterprise-grade applications.
+  \item Built production-facing platform features across backend services, workflow automation, and AI-assisted product surfaces.
+  \item Improved system scalability with queue-driven workflows and tighter coordination across product and engineering teams.
+  \item Designed and shipped an AI-powered enterprise automation platform processing \textbf{500+ emails/day}, eliminating manual triage for \textbf{3 client teams}.
+  \item Optimized end-to-end microservice latency by \textbf{40\%} through async event-driven architecture and Redis caching across \textbf{6 containerized services}.
+\end{itemize}
+
+
+%-----------PROJECTS-----------
+\section{PROJECTS}
+
+\subsection{Resync: UPI Autopay Recovery Platform \hfill \normalfont\textit{2026}}
+\noindent
+\textit{Live at} \href{https://resync.biz}{\textcolor{blue}{\underline{resync.biz}}} \enspace\textbar{}\enspace
+\textit{GitHub:} \href{https://github.com/mandar1045/Resync}{\textcolor{blue}{\underline{github.com/mandar1045/Resync}}}
+
+\vspace{4pt}
+\noindent
+\textbf{Overview:} Resync is the recovery layer for India's UPI Autopay ecosystem. Merchants register their existing autopay customers; Resync watches every expected charge and when one fails, it executes smart retries on the merchant's own payment gateway account. Pricing is success-based: 3\% of recovered revenue. The platform supports both \textbf{direct recovery} (Resync charges on merchant's connected Razorpay/Cashfree keys) and \textbf{delegated recovery} (merchant charges on Resync's instruction, keeping money-moving secrets in their own infra).
+
+\vspace{4pt}
+\noindent\textbf{Architecture \& Technical Details:}
+\begin{itemize}
+  \item Architected a \textbf{9-microservice} platform in \textbf{Go} with \textbf{gRPC/Protobuf} service contracts:
+    \begin{itemize}[label=$\circ$, leftmargin=1em, itemsep=0pt]
+      \item \textbf{auth-svc} — Identity management, API key issuance (test/live keys), Supabase JWT verification
+      \item \textbf{sub-svc} — Subscription state machine (pending → active → past\_due → cancelled), autopay lifecycle
+      \item \textbf{payment-svc} — Multi-gateway abstraction (Razorpay, Cashfree, PhonePe), idempotent charge execution, mandate management, AES-256-GCM credential encryption
+      \item \textbf{dunning-svc} — Smart retry engine with UPI failure code classifier (30+ NPCI/Razorpay/Cashfree codes mapped to 8 internal categories), 4 retry strategies, delegated recovery with nudge sweeps
+      \item \textbf{invoice-svc} — GST-compliant invoice generation, PDF rendering, S3/MinIO storage, platform fee collection via Razorpay Payment Links
+      \item \textbf{webhook-svc} — Outbound event delivery with HMAC-SHA256 signature verification, retry with exponential backoff
+      \item \textbf{checkout-svc} — Hosted checkout pages and recovery links for end-customer payment re-authorization
+      \item \textbf{billing-cron} — Periodic billing sweep, autopay-missed detection, gateway mandate sync
+      \item \textbf{api-gateway} — REST→gRPC translation, rate limiting, auth middleware, Supabase JWT and API key dual-auth
+    \end{itemize}
+
+  \item Designed \textbf{UPI failure code classifier} that normalizes 30+ raw NPCI/gateway codes into 8 internal categories and routes to 4 context-aware retry strategies:
+    \begin{itemize}[label=$\circ$, leftmargin=1em, itemsep=0pt]
+      \item \textbf{Salary-day:} insufficient funds (U30, Z9) → retry on inferred pay-day (1st/15th IST) using historical payment observation streams
+      \item \textbf{Exponential backoff:} technical errors (U16, BT) → 2h, 4h, 8h doubling backoff
+      \item \textbf{Next-day:} limit exceeded (U68, Z8) → retry next day 10:30am IST
+      \item \textbf{Hard fail:} mandate revoked/expired (U14) → immediate subscription cancellation, no retry
+    \end{itemize}
+
+  \item Orchestrated event-driven pipeline using \textbf{Apache Kafka} (via Redpanda) with \texttt{subscription\_id} partition keys ensuring strict event ordering; combined with \textbf{Redis SETNX distributed locks} (TTL 30s) and structured idempotency keys (\texttt{charge:\{sub\_id\}:\{cycle\}}) guaranteeing \textbf{zero double-charges} even under concurrent cron workers.
+
+  \item Implemented \textbf{recovery attribution system} with 5 attribution types (resync\_charge, resync\_settled, resync\_delegated, resync\_assisted, organic) and a 72-hour attribution window, enabling accurate success-based billing (3\% fee) while preventing unjustified charges for organic recoveries.
+
+  \item Built \textbf{Node.js SDK} (\texttt{@mandar1045/resync}, npm-published) and \textbf{Python SDK} (\texttt{resync-sdk}, pip-installable) with full type hints, zero runtime dependencies, HMAC-SHA256 webhook verification, delegated recovery helpers, and comprehensive documentation.
+
+  \item Developed \textbf{Next.js merchant dashboard} with real-time analytics (recovery rates, revenue recovered, failure code breakdowns), autopay management, gateway credential onboarding (Razorpay OAuth Partner flow), webhook configuration, and dunning policy customization.
+
+  \item Deployed \textbf{full observability stack}: Prometheus metrics (per-service gRPC/HTTP latencies, failure code distributions, retry outcomes), Grafana dashboards, Alertmanager with email notifications via Resend, and structured logging with Go's \texttt{slog}.
+
+  \item Containerized all 9 services + infrastructure via \textbf{Docker Compose} (dev) and \textbf{distroless Docker images} ($\sim$20MB each) for production. Infrastructure-as-code with \textbf{Terraform} targeting AWS ECS Fargate. Production deployed on Oracle Cloud Always-Free ARM VM with \textbf{Caddy} auto-HTTPS.
+
+  \item Designed OpenAPI 3.0 specification (800+ lines) covering 15+ REST endpoints with comprehensive request/response schemas, enabling SDK auto-generation and API documentation.
+\end{itemize}
+
+\vspace{6pt}
+\subsection{Continum: AI/ML Workflow Automation Platform \hfill \normalfont\textit{2026}}
+\noindent
+\textit{Live at} \href{https://continum.online}{\textcolor{blue}{\underline{continum.online}}}
+
+\vspace{4pt}
+\noindent
+\textbf{Overview:} Production-grade AI/ML automation platform serving live enterprise clients, focused on intelligent email classification and workflow routing.
+
+\vspace{4pt}
+\noindent\textbf{Technical Details:}
+\begin{itemize}
+  \item Designed ML-powered email classification engine supporting \textbf{15+ custom labels}, reducing manual triage time by \textbf{60\%} for live enterprise clients using NLP pipelines with confidence-scored routing and configurable thresholds.
+  \item Deployed containerized microservices on \textbf{VPS servers} with Docker and CI/CD automation, achieving \textbf{99.5\% uptime} and sub-200ms API response times across production traffic.
+  \item Implemented intelligent response generation using NLP models with contextual template selection, enabling automated replies for common query categories.
+  \item Built admin dashboard with real-time classification accuracy monitoring, label management, and workflow configuration for non-technical users.
+\end{itemize}
+
+\vspace{6pt}
+\subsection{Real-Time Crowd Management System \hfill \normalfont\textit{2025}}
+\noindent
+\textit{GitHub:} \href{https://github.com/mandar1045/Crowd-Management-System-software}{\textcolor{blue}{\underline{github.com/mandar1045/Crowd-Management-System-software}}}
+
+\vspace{4pt}
+\noindent
+\textbf{Overview:} Computer vision system for real-time crowd monitoring and stampede risk prediction, designed for large public venues and events.
+
+\vspace{4pt}
+\noindent\textbf{Technical Details:}
+\begin{itemize}
+  \item Engineered multi-stream computer vision pipeline monitoring \textbf{4 simultaneous CCTV feeds} using YOLO-based object detection for crowd density estimation, achieving \textbf{91\% detection accuracy} at 24 FPS.
+  \item Implemented predictive stampede risk detection algorithm analyzing crowd flow patterns, density gradients, and movement velocity with automated alert dispatching, reducing detection-to-alert latency to \textbf{under 1.5 seconds}.
+  \item Optimized inference throughput via GPU-accelerated frame batching and temporal skip-frame strategies, keeping \textbf{CPU overhead under 15\%} on commodity hardware.
+  \item Built real-time monitoring dashboard with live video feeds, density heat maps, zone-wise crowd counts, and historical trend visualization.
+\end{itemize}
+
+
+%-----------ADDITIONAL OPEN SOURCE CONTRIBUTIONS-----------
+\section{ADDITIONAL OPEN SOURCE CONTRIBUTIONS}
+
+\vspace{2pt}
+\subsection{Kubernetes — CNCF}
+\noindent
+\href{https://github.com/kubernetes/kubernetes}{\textcolor{blue}{\underline{github.com/kubernetes/kubernetes}}} \hfill Contributor
+\begin{itemize}
+  \item Contributed to the Kubernetes container orchestration platform, one of the largest open-source projects in the cloud-native ecosystem maintained by the Cloud Native Computing Foundation.
+\end{itemize}
+
+\vspace{2pt}
+\subsection{cal.com — cal.com}
+\noindent
+\href{https://github.com/calcom/cal.com}{\textcolor{blue}{\underline{github.com/calcom/cal.com}}} \hfill PRs merged, Contributor
+\begin{itemize}
+  \item Contributed to cal.com, the open-source scheduling platform. Merged pull requests addressing feature improvements and codebase enhancements.
+\end{itemize}
+
+\vspace{2pt}
+\subsection{PostHog — PostHog Inc.}
+\noindent
+\href{https://github.com/PostHog/posthog}{\textcolor{blue}{\underline{github.com/PostHog/posthog}}} \hfill Contributor
+\begin{itemize}
+  \item Contributed to PostHog, the open-source product analytics platform, addressing issues in the analytics pipeline and developer experience.
+\end{itemize}
+
+
+%-----------ADDITIONAL INFORMATION-----------
+\section{ADDITIONAL INFORMATION}
+
+\vspace{2pt}
+\noindent
+\textbf{Languages:} English (Fluent), Hindi (Native), Marathi (Native) \\[3pt]
+\textbf{Interests:} Distributed Systems, Payment Infrastructure, Open-Source Software, Cloud-Native Architecture, Fintech \\[3pt]
+\textbf{Location:} Vellore, India (open to relocation)
+
+
+%-------------------------------------------
+\end{document}

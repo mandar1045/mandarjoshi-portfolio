@@ -60,27 +60,19 @@ YoChat — Real-Time Chat Web Application | MERN Stack, Socket.io, JavaScript   
   • Gained hands-on experience in designing web services that host multiple users, manage chat sessions, and deliver
 
     real-time communication
-Autonomous API Version Migration System | Python, API Design, Automation                                                2024
-  • Developed an intelligent system to automate application migration across evolving API versions, reducing manual effort
+PROJECTS
 
-    and minimizing integration errors
-  • Implemented core features including API change detection, compatibility checks, automated mapping logic, and
+Resync: UPI Autopay Recovery Platform
+2026
+- Architected a 9-microservice payment-recovery platform in Go with gRPC/Protobuf service contracts.
+- Designed a UPI failure-code classifier that normalizes 30+ NPCI/gateway codes into 8 internal categories, routing to 4 context-aware retry strategies.
+- Orchestrated an event-driven pipeline with Apache Kafka (Redpanda) and Redis SETNX distributed locks.
 
-    validation workflows
-  • Significantly improved developer productivity by streamlining API upgrades and reducing technical debt in long-term
+Continum: AI/ML Workflow Automation Platform
+2026
+- Deployed a containerized microservices architecture using Docker and Kubernetes for high availability.
+- Established robust CI/CD pipelines for automated testing, building, and deployment, ensuring reliable releases.
 
-    software development
-  • Strengthened understanding of backend development, API lifecycle management, and system automation
-Courses & Training
-Cohort 3.0 - Web Development | 100xDevs                                                              Dec 2024 – Present
-  • Completed web development training program gaining hands-on experience in building responsive and dynamic websites
-
-  • Developed understanding of core front-end and back-end technologies while collaborating on real-world-style projects
-
-
-Interests
-Deeply interested in Artificial Intelligence, Machine Learning, and Web3 technologies. I enjoy exploring how intelligent
-algorithms can automate decision-making, how machine learning models can uncover patterns in data, and how decentralized
-systems like blockchain can enable trustless, transparent applications. I actively follow advancements in these fields,
-experiment with small projects, and aim to integrate these technologies into real-world software solutions.
-
+EDUCATION
+Vellore Institute of Technology | Vellore, India
+B.Tech in Information Technology | July 2024 – Present

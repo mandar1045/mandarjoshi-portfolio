@@ -47,11 +47,11 @@ export default function Hero() {
                     <Typewriter
                         options={{
                             strings: [
-                                "Scalable Systems Engineer",
-                                "Distributed Systems Design",
+                                "Open Source Contributor",
+                                "Software Engineer",
+                                "Supabase & FOSSology Contributor",
                                 "Backend & Cloud Infrastructure",
-                                "Event-Driven Architecture",
-                                "Go · TypeScript · Kubernetes"
+                                "Go · C · PHP · TypeScript"
                             ],
                             autoStart: true,
                             loop: true,

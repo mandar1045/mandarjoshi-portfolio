@@ -41,7 +41,7 @@ export default function Navbar() {
                 </div>
                 <div>
                     <p className="text-sm font-semibold tracking-tight text-foreground">Mandar Joshi</p>
-                    <p className="text-xs text-muted-foreground">Scalable Systems Engineer</p>
+                    <p className="text-xs text-muted-foreground">Open Source Contributor & Software Engineer</p>
                 </div>
             </Link>
 

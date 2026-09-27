@@ -1,8 +1,8 @@
 export const resumeData = {
     name: "Mandar Joshi",
-    role: "Scalable Systems Software Engineer",
-    tagline: "Building scalable, distributed systems and cloud-native infrastructure.",
-    summary: "Software engineer specializing in scalable, distributed systems and cloud-native infrastructure. Experienced in architecting production-grade platforms with Go, gRPC, Kafka, Docker, Kubernetes, and AWS — spanning event-driven microservices, secure data layers, and full observability. Focused on the convergence of distributed systems design, cloud scalability, and reliable software architecture.",
+    role: "Open Source Contributor & Software Engineer",
+    tagline: "Building scalable backend systems and contributing to the open-source infrastructure powering them.",
+    summary: "Software Engineer and active Open Source Contributor specializing in distributed systems, backend infrastructure, and API reliability. Core contributor to massive open-source ecosystems including Supabase (securing self-hosted Realtime infrastructure), FOSSology (resolving critical C/PHP memory bugs), and Kubernetes (CNCF). Architected production-grade microservice platforms in Go and TypeScript handling enterprise workflows, driven by a deep passion for building secure, scalable software in the open.",
     contact: {
         email: "mandarjoshi1045@gmail.com",
         phone: "+91 7020212202",
@@ -19,24 +19,23 @@ export const resumeData = {
         },
     ],
     skills: {
-        languages: ["Python", "Java", "JavaScript", "TypeScript", "SQL", "Bash", "C++"],
-        frameworks: ["React", "Next.js", "Node.js", "Express.js", "FastAPI", "PyTorch", "NumPy", "Pandas", "TailwindCSS", "Socket.io"],
-        ai_ml: ["Machine Learning", "Deep Learning", "TensorFlow", "Keras", "OpenCV", "Hugging Face", "LLMs", "RAG", "Model Deployment"],
-        devops: ["AWS", "Docker", "Kubernetes", "CI/CD", "Linux", "GitHub Actions"],
-        tools: ["Git", "GitHub", "Postman", "MongoDB", "PostgreSQL", "Redis", "Figma"]
+        languages: ["Go", "TypeScript", "C", "PHP", "Elixir", "Python", "SQL", "Bash", "JavaScript"],
+        frameworks: ["gRPC/Protobuf", "Node.js", "Express.js", "React.js", "Next.js"],
+        devops: ["Docker", "Kubernetes", "Linux", "Nginx", "Caddy", "Terraform", "CI/CD"],
+        tools: ["Git", "GitHub", "PostgreSQL", "Redis", "Apache Kafka"]
     },
     experience: [
         {
-            company: "Xnotch Itech",
-            role: "Full Stack Developer",
-            date: "2026 – Present",
+            company: "Locara Labs",
+            role: "Software Developer Intern",
+            date: "August 2026 – Present",
             location: "Remote",
-            context: "Renew Care Plus",
+            context: "Embodied AI & Robotics Data",
             description: [
-                "Engineering complex, security-hardened database management for Renew Care Plus, a B2B healthcare platform, with encrypted-at-rest storage, role-based access controls, and audit-ready data models for sensitive records",
-                "Building B2B dashboard analytics that surface real-time business metrics, cohort reporting, and drill-down insights for enterprise clients",
-                "Designing secure, high-performance query layers and schema migrations that safeguard sensitive data while keeping analytics responsive at scale",
-                "Owning full-stack delivery end to end — from database schema and API contracts to the interactive analytics UI"
+                "Building production web and mobile applications for large-scale egocentric video datasets that power the next generation of robotics and embodied AI systems",
+                "Developing full-stack features and infrastructure across a modern stack including Next.js, React Native, Supabase, and Cloudflare",
+                "Building and supporting robust data pipelines and quality-assurance tooling to streamline high-throughput video dataset workflows",
+                "Owning end-to-end feature delivery, participating in code reviews, and debugging production issues for internal users, field teams, and clients"
             ],
         },
         {
@@ -53,7 +52,7 @@ export const resumeData = {
         },
         {
             company: "Tense AI",
-            role: "Full Stack Developer Intern",
+            role: "Software Engineer Intern",
             date: "Dec 2025 – Feb 2026",
             location: "Remote/Vellore",
             description: [
@@ -69,50 +68,132 @@ export const resumeData = {
             name: "FOSSology",
             repository: "fossology/fossology",
             url: "https://github.com/fossology/fossology/pulls?q=author%3Amandar1045",
-            pullRequests: 22,
-            highlights: [
-                "Authored API, DAO, proxy, and package-metadata fixes covering null safety, status codes, import robustness, and scan stability.",
-                "Contributed Kubernetes-native deployment work spanning scheduler host routing, SSH worker pods, Helm packaging, Argo CD, and KEDA-based scaling."
-            ]
-        },
-        {
-            name: "Kubernetes",
-            repository: "kubernetes/kubernetes",
-            url: "https://github.com/kubernetes/kubernetes/pulls?q=author%3Amandar1045",
-            pullRequests: 2,
-            highlights: [
-                "Opened upstream fixes in `authn` to preserve TokenReview cancellation behavior without leaking request-scoped values.",
-                "Contributed `apimachinery` cleanup to ignore private fields during unstructured conversion and reduce surprising serialization behavior."
+            mergedPRs: 8,
+            openPRs: 1,
+            issuesOpened: 3,
+            contributions: [
+                {
+                    title: "fossology/fossology#3605: Correct typos in user-facing messages",
+                    description: "Fixed typos across multiple UI components and user-facing CLI messages for better clarity.",
+                    url: "https://github.com/fossology/fossology/pull/3605",
+                    tech: ["PHP"]
+                },
+                {
+                    title: "fossology/fossology#3555: Fix pkgagent memory & encoding bugs",
+                    description: "Resolved unsafe strcpy(), NULL-before-free crashes, and HTML double-encoding in package info.",
+                    url: "https://github.com/fossology/fossology/pull/3555",
+                    tech: ["C", "PHP"]
+                },
+                {
+                    title: "fossology/fossology#3554: Fix libfossrepo path string lengths",
+                    description: "Fixed strlen(Type) misuse in tracking extension length during temporary path generation.",
+                    url: "https://github.com/fossology/fossology/pull/3554",
+                    tech: ["C"]
+                },
+                {
+                    title: "fossology/fossology#3513: Fix DAO SQL bugs & null safety",
+                    description: "Fixed SQL formatting bugs, array intval() misuse, and added full test coverage for License DAOs.",
+                    url: "https://github.com/fossology/fossology/pull/3513",
+                    tech: ["PHP", "SQL"]
+                },
+                {
+                    title: "fossology/fossology#3477: Fix GroupController HTTP status codes",
+                    description: "Corrected null safety gaps and updated REST conventions (200→201/202) in member API endpoints.",
+                    url: "https://github.com/fossology/fossology/pull/3477",
+                    tech: ["PHP", "REST API"]
+                },
+                {
+                    title: "fossology/fossology#3456: Fix N+1 queries & API crashes",
+                    description: "Eliminated redundant DB lookups and prevented TypeErrors on synthetic license entries in the /scanned API.",
+                    url: "https://github.com/fossology/fossology/pull/3456",
+                    tech: ["PHP", "REST API"]
+                },
+                {
+                    title: "fossology/fossology#3443: Update deprecated PHPUnit assertions",
+                    description: "Replaced deprecated assertRegExp calls across the test suite for modern PHPUnit compatibility.",
+                    url: "https://github.com/fossology/fossology/pull/3443",
+                    tech: ["PHP", "Testing"]
+                },
+                {
+                    title: "fossology/fossology#3438: Fix API null safety & misleading errors",
+                    description: "Resolved unhandled null states, corrected status codes, and fixed typos in error payloads.",
+                    url: "https://github.com/fossology/fossology/pull/3438",
+                    tech: ["PHP", "REST API"]
+                }
             ]
         },
         {
             name: "Supabase",
             repository: "supabase/supabase",
             url: "https://github.com/supabase/supabase/pulls?q=author%3Amandar1045",
-            pullRequests: 3,
-            highlights: [
-                "Worked on self-hosted reliability fixes including moving `Realtime DB_ENC_KEY` into environment configuration.",
-                "Contributed improvements around self-hosted observability exposure and clearer CSV import constraint error handling in Studio."
+            mergedPRs: 8,
+            openPRs: 9,
+            issuesOpened: 5,
+            contributions: [
+                {
+                    title: "supabase/realtime#2231: Fix WAL sender test flakes",
+                    description: "Fixed max_wal_senders test flakes caused by missing public.test table in Realtime.",
+                    url: "https://github.com/supabase/realtime/pull/2231",
+                    tech: ["Elixir", "PostgreSQL", "Testing"]
+                },
+                {
+                    title: "supabase/realtime#2228: Consolidate extension tests",
+                    description: "Refactored and consolidated extension tests into one canonical location mirroring lib/.",
+                    url: "https://github.com/supabase/realtime/pull/2228",
+                    tech: ["Elixir", "Testing"]
+                },
+                {
+                    title: "supabase/realtime#2222: Suppress Ranch connection logs",
+                    description: "Added tests to verify that Ranch killed connection logs are properly suppressed in the tracker.",
+                    url: "https://github.com/supabase/realtime/pull/2222",
+                    tech: ["Elixir", "Ranch"]
+                },
+                {
+                    title: "supabase/realtime#2174: Fix emoji slicing in fuzzy search",
+                    description: "Prevented emoji surrogate pair slicing bugs in the Realtime inspector's fuzzy search feature.",
+                    url: "https://github.com/supabase/realtime/pull/2174",
+                    tech: ["Elixir", "Search"]
+                },
+                {
+                    title: "supabase/realtime#2167: Fix Ranch charlist log filter",
+                    description: "Fixed character list handling in the Ranch log filter to prevent logging errors.",
+                    url: "https://github.com/supabase/realtime/pull/2167",
+                    tech: ["Elixir", "Logging"]
+                },
+                {
+                    title: "supabase/supabase#50306: Proxy .well-known auth route",
+                    description: "Proxied /.well-known/* and /pg/* routes to the API gateway in Caddy/Nginx configs to fix 404s.",
+                    url: "https://github.com/supabase/supabase/pull/50306",
+                    tech: ["Docker", "Nginx", "Caddy"]
+                },
+                {
+                    title: "supabase/supabase#46021: Secure Realtime encryption key",
+                    description: "Moved hardcoded Realtime DB_ENC_KEY to a configurable .env variable for self-hosted instances.",
+                    url: "https://github.com/supabase/supabase/pull/46021",
+                    tech: ["Docker", "Security"]
+                },
+                {
+                    title: "supabase/server#160: Validate JWT audience & issuer",
+                    description: "Added strict validation for JWT audience and issuer fields to improve authentication security.",
+                    url: "https://github.com/supabase/server/pull/160",
+                    tech: ["TypeScript", "Security", "Auth"]
+                }
             ]
         },
         {
             name: "Cal.com",
             repository: "calcom/cal.diy",
             url: "https://github.com/calcom/cal.diy/pulls?q=author%3Amandar1045",
-            pullRequests: 2,
-            highlights: [
-                "Contributed booking-limit logic updates to correctly count overlapping bookings during scheduling checks.",
-                "Cleaned up docs, comments, and setup copy to improve the self-hosted developer experience in `cal.diy`."
-            ]
-        },
-        {
-            name: "PostHog",
-            repository: "PostHog/posthog",
-            url: "https://github.com/PostHog/posthog/pulls?q=author%3Amandar1045",
-            pullRequests: 3,
-            highlights: [
-                "Authored frontend/runtime fixes for stale lazy chunk recovery outside the scene loader.",
-                "Contributed fixes around sandbox MCP readonly header handling and cleanup of runtime copy and prompts."
+            mergedPRs: 2,
+            openPRs: 0,
+            issuesOpened: 0,
+            contributions: [
+                {
+                    title: "Improved Setup Documentation",
+                    description: "Cleaned up typos across docs, comments, and setup copy for PayPal integrations.",
+                    url: "https://github.com/calcom/cal.diy/pull/29260",
+                    tech: ["Markdown", "Docs"]
+                }
             ]
         }
     ],
@@ -189,18 +270,6 @@ export const resumeData = {
             video: "/videos/gearup.mp4",
             link: "https://gearupsports.vercel.app/",
             github: "https://github.com/mandar1045/GearUp-Sports"
-        },
-        {
-            title: "Autonomous API Version Migration System",
-            subtitle: "Intelligent System",
-            tech: ["Python", "API Design", "Automation"],
-            date: "2024",
-            points: [
-                "Developed an intelligent system to automate application migration across evolving API versions, reducing manual effort and minimizing integration errors",
-                "Implemented core features including API change detection, compatibility checks, automated mapping logic, and validation workflows",
-                "Significantly improved developer productivity by streamlining API upgrades and reducing technical debt in long-term software development",
-                "Strengthened understanding of backend development, API lifecycle management, and system automation"
-            ],
         },
     ],
     courses: [

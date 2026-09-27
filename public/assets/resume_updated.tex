@@ -1,0 +1,150 @@
+%-------------------------
+% Resume - Custom Format
+%-------------------------
+
+\documentclass[letterpaper,9.5pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{microtype}
+\input{glyphtounicode}
+
+\geometry{top=0.25in, bottom=0.25in, left=0.4in, right=0.4in}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\pdfgentounicode=1
+\linespread{0.98}
+
+% Global itemize settings to avoid repetition
+\setlist[itemize]{leftmargin=1.5em, label=\textbullet, itemsep=0.5pt, topsep=0pt, parsep=0pt, partopsep=0pt}
+
+% Section formatting -- centered, bold, with lines
+\titleformat{\section}[block]
+  {\normalfont\normalsize\bfseries\centering}
+  {}{0em}{}[{\titlerule[0.5pt]}]
+\titlespacing{\section}{0pt}{2pt}{1pt}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{flushleft}
+  {\LARGE \textbf{MANDAR JOSHI}} \\[2pt]
+  {\small
+  \textbf{Phone:}\ +91 70202 12202 \enspace\textbar{}\enspace
+  \textbf{Email:}\ \href{mailto:mandarjoshi1045@gmail.com}{\textcolor{blue}{mandarjoshi1045@gmail.com}} \\[2pt]
+  \textbf{LinkedIn:}\ \href{https://linkedin.com/in/mandar-joshi-0b951b28a}{\textcolor{blue}{linkedin.com/in/mandar-joshi-0b951b28a}}
+  \enspace\textbar{}\enspace
+  \textbf{GitHub:}\ \href{https://github.com/mandar1045}{\textcolor{blue}{github.com/mandar1045}} \\[2pt]
+  \textbf{Portfolio:}\ \href{https://mandarjoshi.me}{\textcolor{blue}{mandarjoshi.me}}
+  }
+\end{flushleft}
+
+\vspace{-4pt}
+\noindent\rule{\textwidth}{0.5pt}
+\vspace{-6pt}
+
+
+%-----------PROFESSIONAL SUMMARY-----------
+
+\section{PROFESSIONAL SUMMARY}
+
+\vspace{2pt}
+\noindent
+Software Engineer and active Open Source Contributor specializing in distributed systems, backend infrastructure, and API reliability. Core contributor to massive open-source ecosystems including \textbf{Supabase} (securing self-hosted Realtime infrastructure), \textbf{FOSSology} (resolving critical C/PHP memory bugs), and \textbf{Kubernetes} (CNCF). Architected production-grade microservice platforms in Go and TypeScript handling enterprise workflows, driven by a deep passion for building secure, scalable software in the open.
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+
+\vspace{1pt}
+\noindent
+\textbf{Vellore Institute of Technology} \hfill Vellore, India \\
+B.Tech in Information Technology \hfill \textit{Jul.\ 2024 -- May 2028 (Expected)} \\
+\textit{Relevant Coursework:} Data Structures \& Algorithms, Database Management Systems, Operating Systems, Computer Networks, Object-Oriented Programming, Machine Learning, Cloud Computing
+
+
+%-----------TECHNICAL SKILLS-----------
+\section{TECHNICAL SKILLS}
+
+\vspace{2pt}
+\noindent
+\textbf{Languages:} Go, TypeScript, C, PHP, Elixir, Python, SQL, Bash, JavaScript \\
+\vspace{1.5pt}
+\textbf{Backend \& Systems:} gRPC/Protobuf, Node.js, Express.js, React.js, Next.js \\
+\vspace{1.5pt}
+\textbf{Infra/DevOps:} Docker, Kubernetes, Linux, Nginx, Caddy, Terraform, GitHub Actions, CI/CD \\
+\vspace{1.5pt}
+\textbf{Databases/Other:} PostgreSQL, Redis, Apache Kafka, Git, GitHub, Postman
+
+
+%-----------WORK EXPERIENCE \& OPEN SOURCE-----------
+\section{WORK EXPERIENCE \& OPEN SOURCE}
+
+\vspace{1pt}
+\noindent\textbf{OPEN SOURCE CONTRIBUTOR \textbar{} SUPABASE INC.} \hfill \textit{8 Merged PRs, 9 Open PRs, 5 Issues}
+\begin{itemize}
+  \item Secured self-hosted Realtime instances by moving hardcoded encryption keys to configurable \texttt{.env} variables, and added strict JWT audience/issuer validation in the Supabase Server.
+  \item Proxied OAuth metadata endpoints (\texttt{.well-known} routes) to the API gateway in Caddy/Nginx configurations, resolving critical 404s for self-hosted deployments.
+  \item Fixed cascading Docker Compose healthcheck failures by introducing proper grace intervals, and resolved multiple test flakes and log suppression bugs in Elixir-based Realtime backend.
+\end{itemize}
+
+\vspace{1pt}
+\noindent\textbf{OPEN SOURCE CONTRIBUTOR \textbar{} FOSSOLOGY (LINUX FOUNDATION)} \hfill \textit{8 Merged PRs, 1 Open PR, 3 Issues}
+\begin{itemize}
+  \item Eliminated N+1 queries, redundant DB lookups, and null-crashes in the \texttt{/scanned} API endpoint. Updated member API endpoints to adhere to proper REST conventions.
+  \item Fixed severe SQL formatting bugs and type misuses in the DAO layer, backing fixes with comprehensive PHPUnit test coverage.
+  \item Resolved critical memory bugs in the C-based \texttt{pkgagent}, including unsafe \texttt{strcpy()} usage, NULL-before-free crashes, and string-length tracking bugs.
+\end{itemize}
+
+\vspace{1pt}
+\noindent\textbf{SOFTWARE DEVELOPER INTERN \textbar{} LOCARA LABS} \hfill \textit{Aug.\ 2026 -- Present}
+\begin{itemize}
+  \item Building production web and mobile applications for large-scale egocentric video datasets that power the next generation of robotics and embodied AI systems.
+  \item Developing full-stack features and infrastructure across a modern stack including Next.js, React Native, Supabase, and Cloudflare.
+  \item Building and supporting robust data pipelines and quality-assurance tooling to streamline high-throughput video dataset workflows for field teams and clients.
+\end{itemize}
+
+\vspace{1pt}
+\noindent\textbf{SOFTWARE ENGINEER INTERN \textbar{} TENSE AI} \hfill \textit{Dec.\ 2025 -- Jun.\ 2026}
+\begin{itemize}
+  \item Architected scalable RESTful APIs and microservices using Node.js and Express, ensuring high performance and security for enterprise-grade applications.
+  \item Built production-facing platform features across backend services, workflow automation, and AI-assisted product surfaces.
+  \item Improved system scalability with queue-driven workflows and tighter coordination across product and engineering teams.
+\end{itemize}
+
+
+%-----------PROJECTS-----------
+\section{PROJECTS}
+
+\vspace{1pt}
+\noindent\textbf{Resync: UPI Autopay Recovery Platform} \textbar{} \href{https://resync.biz}{\textcolor{blue}{\underline{LINK}}} \hfill \textit{2026}
+\begin{itemize}
+  \item Architected a \textbf{9-microservice} payment recovery platform in \textbf{Go + gRPC} with smart dunning engine that classifies UPI failure codes and schedules context-aware retries.
+  \item Orchestrated event-driven pipeline using \textbf{Kafka} (partition-keyed ordering), \textbf{Redis} distributed locks, and idempotency keys ensuring \textbf{zero double-charges}.
+\end{itemize}
+
+\vspace{1pt}
+\noindent\textbf{Continum: AI/ML Workflow Automation Platform} \textbar{} \href{https://continum.online}{\textcolor{blue}{\underline{LINK}}} \hfill \textit{2026}
+\begin{itemize}
+  \item Deployed a containerized microservices architecture using Docker and Kubernetes for high availability.
+  \item Established robust CI/CD pipelines for automated testing, building, and deployment, ensuring reliable releases.
+\end{itemize}
+
+%-------------------------------------------
+\end{document}
