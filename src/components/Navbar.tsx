@@ -72,6 +72,14 @@ export default function Navbar() {
                 >
                     <Linkedin size={18} />
                 </Link>
+                                <Link
+                    href="/mandar-joshi-cv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden rounded-full border border-primary/20 bg-transparent px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary/5 sm:inline-flex"
+                >
+                    CV
+                </Link>
                 <Link
                     href="/mandar-joshi-resume.pdf"
                     target="_blank"
