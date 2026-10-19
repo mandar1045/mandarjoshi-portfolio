@@ -10,7 +10,8 @@ import {
     SiPytorch, SiPandas, SiSocketdotio, SiExpress, SiFastapi, SiTensorflow,
     SiKeras, SiOpencv, SiHuggingface, SiGithubactions, SiMongodb, SiPostgresql,
     SiRedis, SiFigma, SiPostman, SiGnubash, SiCplusplus, SiMysql,
-    SiElixir, SiGo, SiPhp, SiNginx, SiCaddy
+    SiElixir, SiGo, SiPhp, SiNginx, SiCaddy, SiPhoenixframework, SiCloudflare,
+    SiSupabase, SiApachekafka
 } from "react-icons/si";
 
 type SkillIconProps = {
@@ -35,12 +36,16 @@ const getIcon = (name: string) => {
         "SQL": { icon: SiMysql, color: "#5C7B8F" },
 
         "React": { icon: SiReact, color: "#5B90A5" },
+        "React.js": { icon: SiReact, color: "#5B90A5" },
+        "React Native": { icon: SiReact, color: "#5B90A5" },
         "Next.js": { icon: SiNextdotjs, color: "#4D453F" },
         "Node.js": { icon: SiNodedotjs, color: "#668B59" },
         "Express.js": { icon: SiExpress, color: "#5A514B" },
         "FastAPI": { icon: SiFastapi, color: "#5D8B79" },
         "Socket.io": { icon: SiSocketdotio, color: "#5A514B" },
         "TailwindCSS": { icon: SiTailwindcss, color: "#5B95A7" },
+        "Tailwind CSS": { icon: SiTailwindcss, color: "#5B95A7" },
+        "Phoenix": { icon: SiPhoenixframework, color: "#C7623F" },
 
         "PyTorch": { icon: SiPytorch, color: "#C8725A" },
         "Pandas": { icon: SiPandas, color: "#6D6393" },
@@ -56,6 +61,8 @@ const getIcon = (name: string) => {
         "Model Deployment": { icon: Server, color: "#6E665D" },
 
         "Docker": { icon: SiDocker, color: "#5A88B3" },
+        "Docker Compose": { icon: SiDocker, color: "#5A88B3" },
+        "Cloudflare": { icon: SiCloudflare, color: "#C9813F" },
         "Kubernetes": { icon: SiKubernetes, color: "#5578AF" },
         "AWS": { icon: SiAmazon, color: "#BA8744" },
         "Linux": { icon: SiLinux, color: "#AD934F" },
@@ -74,6 +81,10 @@ const getIcon = (name: string) => {
         "Postman": { icon: SiPostman, color: "#C87653" },
         "PostgreSQL": { icon: SiPostgresql, color: "#5A7398" },
         "Redis": { icon: SiRedis, color: "#B86161" },
+        "Supabase": { icon: SiSupabase, color: "#4E9A72" },
+        "Apache Kafka": { icon: SiApachekafka, color: "#5A514B" },
+        "ExUnit": { icon: SiElixir, color: "#4E2A8E" },
+        "PHPUnit": { icon: SiPhp, color: "#777BB4" },
     };
 
     const item = iconMap[name] || { icon: Code, color: "#7A5B45" };

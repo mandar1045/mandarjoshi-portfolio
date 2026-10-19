@@ -37,7 +37,7 @@ export default function Experience() {
                     className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
                 >
                     <p className="max-w-3xl text-muted-foreground">
-                        Authored {totalOpenSourcePRs} pull requests and opened {totalIssues} issues across Supabase, FOSSology, and Cal.com, actively contributing to bug fixes, system reliability, and architecture improvements.
+                        Authored {totalOpenSourcePRs} pull requests and opened {totalIssues} issues across Supabase, FOSSology, Elixir, and Cal.com, actively contributing to bug fixes, system reliability, and architecture improvements.
                     </p>
 
                     <a

@@ -2,7 +2,7 @@ export const resumeData = {
     name: "Mandar Joshi",
     role: "Open Source Contributor & Software Engineer",
     tagline: "Building scalable backend systems and contributing to the open-source infrastructure powering them.",
-    summary: "Software Engineer and active Open Source Contributor specializing in distributed systems, backend infrastructure, and API reliability. Core contributor to massive open-source ecosystems including Supabase (securing self-hosted Realtime infrastructure), FOSSology (resolving critical C/PHP memory bugs), and Kubernetes (CNCF). Architected production-grade microservice platforms in Go and TypeScript handling enterprise workflows, driven by a deep passion for building secure, scalable software in the open.",
+    summary: "Software engineer with a deep passion for open-source development and scalable systems. Active contributor to major open-source projects including Supabase, FOSSology, and Elixir, focusing on core API reliability, secure self-hosted infrastructure, and distributed systems. Experienced in architecting production-grade platforms with Go, Elixir, C, PHP, Docker, and TypeScript, and always looking to solve complex engineering challenges in the open.",
     contact: {
         email: "mandarjoshi1045@gmail.com",
         phone: "+91 7020212202",
@@ -15,18 +15,18 @@ export const resumeData = {
             degree: "B.Tech in Information Technology",
             institution: "Vellore Institute of Technology",
             location: "Vellore, India",
-            date: "July 2024 – Present",
+            date: "July 2024 – May 2028 (Expected)",
         },
     ],
     skills: {
-        languages: ["Go", "TypeScript", "C", "PHP", "Elixir", "Python", "SQL", "Bash", "JavaScript"],
-        frameworks: ["gRPC/Protobuf", "Node.js", "Express.js", "React.js", "Next.js"],
-        devops: ["Docker", "Kubernetes", "Linux", "Nginx", "Caddy", "Terraform", "CI/CD"],
-        tools: ["Git", "GitHub", "PostgreSQL", "Redis", "Apache Kafka"]
+        languages: ["Go", "Elixir", "TypeScript", "C", "PHP", "SQL", "JavaScript", "Bash"],
+        frameworks: ["Phoenix", "Node.js", "Express.js", "Next.js", "React.js", "React Native", "gRPC/Protobuf", "Tailwind CSS"],
+        devops: ["Docker", "Docker Compose", "Kubernetes", "Linux", "Nginx", "Caddy", "Cloudflare", "GitHub Actions", "CI/CD"],
+        tools: ["PostgreSQL", "Supabase", "Redis", "Apache Kafka", "ExUnit", "PHPUnit", "Git", "Postman"]
     },
     experience: [
         {
-            company: "Locara Labs",
+            company: "Stealth Startup",
             role: "Software Developer Intern",
             date: "August 2026 – Present",
             location: "Remote",
@@ -39,7 +39,7 @@ export const resumeData = {
             ],
         },
         {
-            company: "Tense AI",
+            company: "Stealth Startup",
             role: "Software Engineer",
             date: "Mar 2026 – Jun 2026",
             location: "Remote/Vellore",
@@ -51,7 +51,7 @@ export const resumeData = {
             ],
         },
         {
-            company: "Tense AI",
+            company: "Stealth Startup",
             role: "Software Engineer Intern",
             date: "Dec 2025 – Feb 2026",
             location: "Remote/Vellore",
@@ -68,10 +68,28 @@ export const resumeData = {
             name: "FOSSology",
             repository: "fossology/fossology",
             url: "https://github.com/fossology/fossology/pulls?q=author%3Amandar1045",
-            mergedPRs: 8,
-            openPRs: 1,
-            issuesOpened: 3,
+            mergedPRs: 11,
+            openPRs: 3,
+            issuesOpened: 8,
             contributions: [
+                {
+                    title: "fossology/fossology#3916: Skip reserved email domains in copyright scans",
+                    description: "Fixed the copyright agent's email regex so example.com, .test and .invalid addresses are skipped instead of reported with the last letter cut off.",
+                    url: "https://github.com/fossology/fossology/pull/3916",
+                    tech: ["C++", "Regex", "Testing"]
+                },
+                {
+                    title: "fossology/fossology#3903: Fix CycloneDX 1.7 schema validation",
+                    description: "Made the CycloneDX 1.7 SBOM export schema-valid by replacing the removed vendor field and writing non-SPDX licenses as expressions.",
+                    url: "https://github.com/fossology/fossology/pull/3903",
+                    tech: ["PHP", "SBOM"]
+                },
+                {
+                    title: "fossology/fossology#3902: Preserve license type on import",
+                    description: "Stopped license imports without a type column from resetting every matched license to a misspelled 'Permisssive' type, with unit test coverage.",
+                    url: "https://github.com/fossology/fossology/pull/3902",
+                    tech: ["PHP", "Testing"]
+                },
                 {
                     title: "fossology/fossology#3605: Correct typos in user-facing messages",
                     description: "Fixed typos across multiple UI components and user-facing CLI messages for better clarity.",
@@ -126,10 +144,40 @@ export const resumeData = {
             name: "Supabase",
             repository: "supabase/supabase",
             url: "https://github.com/supabase/supabase/pulls?q=author%3Amandar1045",
-            mergedPRs: 8,
-            openPRs: 9,
-            issuesOpened: 5,
+            mergedPRs: 13,
+            openPRs: 14,
+            issuesOpened: 25,
             contributions: [
+                {
+                    title: "supabase/realtime#2379: Pick broadcast payload type from Content-Type",
+                    description: "Made the single broadcast endpoint choose JSON or binary from the Content-Type header, so JSON bodies with a _binary key or non-object payloads are no longer mangled.",
+                    url: "https://github.com/supabase/realtime/pull/2379",
+                    tech: ["Elixir", "Phoenix"]
+                },
+                {
+                    title: "supabase/realtime#2345: Contain serializer encode errors",
+                    description: "Stopped one oversized broadcast event from crashing the shared GenRpcPubSub worker by containing serializer errors in the message dispatcher.",
+                    url: "https://github.com/supabase/realtime/pull/2345",
+                    tech: ["Elixir", "Reliability"]
+                },
+                {
+                    title: "supabase/realtime#2343: Reject non-string presence keys",
+                    description: "Validated presence keys as strings so a single bad join can no longer crash the Presence shard shared across tenants.",
+                    url: "https://github.com/supabase/realtime/pull/2343",
+                    tech: ["Elixir", "Phoenix"]
+                },
+                {
+                    title: "supabase/realtime#2306: Fix flaky Presence & Replication tests",
+                    description: "Fixed 6 flaky integration tests across Presence rate limiting, untracking, and replication slot handling.",
+                    url: "https://github.com/supabase/realtime/pull/2306",
+                    tech: ["Elixir", "Testing"]
+                },
+                {
+                    title: "supabase/realtime#2283: Fix flaky CDC, metrics & tenant tests",
+                    description: "Fixed flaky cdc_rls, metrics_pusher and tenant_controller tests, including an assertion that compared a list to an integer and never checked anything.",
+                    url: "https://github.com/supabase/realtime/pull/2283",
+                    tech: ["Elixir", "Testing"]
+                },
                 {
                     title: "supabase/realtime#2231: Fix WAL sender test flakes",
                     description: "Fixed max_wal_senders test flakes caused by missing public.test table in Realtime.",
@@ -181,10 +229,32 @@ export const resumeData = {
             ]
         },
         {
+            name: "Elixir",
+            repository: "elixir-lang/elixir",
+            url: "https://github.com/elixir-lang/elixir/pulls?q=author%3Amandar1045",
+            mergedPRs: 2,
+            openPRs: 1,
+            issuesOpened: 4,
+            contributions: [
+                {
+                    title: "elixir-lang/elixir#16001: Stable formatting for comments in tuple arguments",
+                    description: "Restored the comment check the formatter uses when a tuple or bitstring is the last call argument, so mix format gives stable output on the first pass.",
+                    url: "https://github.com/elixir-lang/elixir/pull/16001",
+                    tech: ["Elixir", "Formatter"]
+                },
+                {
+                    title: "elixir-lang/elixir#15999: Stable formatting for comments after operators",
+                    description: "Made a comment before an operator's right operand force a line break, so mix format no longer changes its output on a second run.",
+                    url: "https://github.com/elixir-lang/elixir/pull/15999",
+                    tech: ["Elixir", "Formatter"]
+                }
+            ]
+        },
+        {
             name: "Cal.com",
             repository: "calcom/cal.diy",
             url: "https://github.com/calcom/cal.diy/pulls?q=author%3Amandar1045",
-            mergedPRs: 2,
+            mergedPRs: 1,
             openPRs: 0,
             issuesOpened: 0,
             contributions: [

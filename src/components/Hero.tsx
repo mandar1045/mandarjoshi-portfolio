@@ -49,7 +49,7 @@ export default function Hero() {
                             strings: [
                                 "Open Source Contributor",
                                 "Software Engineer",
-                                "Supabase & FOSSology Contributor",
+                                "Supabase · FOSSology · Elixir",
                                 "Backend & Cloud Infrastructure",
                                 "Go · C · PHP · TypeScript"
                             ],
