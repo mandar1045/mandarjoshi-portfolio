@@ -232,10 +232,16 @@ export const resumeData = {
             name: "Elixir",
             repository: "elixir-lang/elixir",
             url: "https://github.com/elixir-lang/elixir/pulls?q=author%3Amandar1045",
-            mergedPRs: 2,
-            openPRs: 1,
+            mergedPRs: 3,
+            openPRs: 0,
             issuesOpened: 4,
             contributions: [
+                {
+                    title: "elixir-lang/elixir#16004: Keep parens on anonymous calls with do-end blocks",
+                    description: "Fixed the formatter dropping parens on anonymous function calls with do-end blocks, which turned valid code into unparseable output and also affected Macro.to_string/1.",
+                    url: "https://github.com/elixir-lang/elixir/pull/16004",
+                    tech: ["Elixir", "Formatter"]
+                },
                 {
                     title: "elixir-lang/elixir#16001: Stable formatting for comments in tuple arguments",
                     description: "Restored the comment check the formatter uses when a tuple or bitstring is the last call argument, so mix format gives stable output on the first pass.",
