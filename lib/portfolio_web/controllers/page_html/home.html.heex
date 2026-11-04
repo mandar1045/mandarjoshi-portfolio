@@ -1,0 +1,368 @@
+<% lib = profile().library() %>
+<header class="nav">
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <div class="container nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">MJ</span>
+      <span class="brand-name">Mandar Joshi</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#stampede">Stampede</a>
+      <a href="#open-source">Open source</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href={profile().github()} aria-label="GitHub">
+        <.icon name="github" />
+      </a>
+      <a class="icon-btn" href={profile().x()} aria-label="X">
+        <.icon name="x" />
+      </a>
+      <a class="btn btn-small" href={profile().resume()}>
+        <.icon name="file-text" /> Resume
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section id="about" class="hero" data-parallax>
+    <div class="hero-glows" aria-hidden="true">
+      <span class="g1"></span><span class="g2"></span>
+    </div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow-pill">
+          <span class="logo-stack">
+            <img
+              :for={p <- Enum.take(@projects, 3)}
+              :if={p.logo}
+              src={p.logo}
+              alt=""
+              width="20"
+              height="20"
+            />
+          </span>
+          Contributing to {sentence(project_names(@projects))}
+        </p>
+        <h1>Mandar Joshi</h1>
+        <p class="hero-title">
+          Software engineer working on
+          <span
+            class="hl rotator"
+            data-rotate="backend systems|distributed systems|realtime services"
+          >backend systems</span><br class="br-wide" /> and the
+          <span class="hl">open source infrastructure</span>
+          they run on.
+        </p>
+        <p class="hero-lede">
+          I fix bugs in Supabase Realtime, the Elixir formatter and FOSSology, covering auth
+          security, API performance, memory safety and developer tooling.
+          I also wrote and maintain <a href="#stampede">Stampede</a>, a load-testing library for Phoenix.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={profile().github()}>
+            <.icon name="github" /> View my GitHub
+          </a>
+          <a class="btn" href={profile().resume()}><.icon name="file-text" /> Resume</a>
+          <a class="icon-btn bordered" href={profile().linkedin()} aria-label="LinkedIn">
+            <.icon name="linkedin" />
+          </a>
+          <a class="icon-btn bordered" href={profile().x()} aria-label="X">
+            <.icon name="x" />
+          </a>
+          <a class="icon-btn bordered" href={"mailto:#{profile().email()}"} aria-label="Email">
+            <.icon name="mail" />
+          </a>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img src={~p"/images/profile.jpg"} alt="Mandar Joshi" width="400" height="400" />
+        <figcaption>
+          <span class="status-dot"></span>
+          {profile().badge()}
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="container">
+      <section class="now" aria-label="What I'm up to" data-stagger>
+        <a class="now-cell spot" href={profile().library().hex}>
+          <span class="now-label"><.icon name="package" /> Latest release</span>
+          <span class="now-main">Stampede v{@snapshot.library.version}</span>
+          <span class="now-sub">
+            on Hex<span :if={@snapshot.library[:released_on]}> · {ago(
+              @snapshot.library.released_on
+            )}</span>
+          </span>
+        </a>
+        <a :if={@latest.merged} class="now-cell spot" href={@latest.merged.url}>
+          <span class="now-label"><.icon name="git-merge" /> Latest merge</span>
+          <span class="now-main">{inline_code(PullRequest.clean_title(@latest.merged.title))}</span>
+          <span class="now-sub">
+            {Contributions.project_name(@latest.merged)} · {ago(@latest.merged.date)}
+          </span>
+        </a>
+        <a :if={@latest.open} class="now-cell spot" href={@latest.open.url}>
+          <span class="now-label">
+            <span class="live-dot" aria-hidden="true"></span> In review
+          </span>
+          <span class="now-main">{inline_code(PullRequest.clean_title(@latest.open.title))}</span>
+          <span class="now-sub">
+            {Contributions.project_name(@latest.open)} · opened {ago(@latest.open.date)}
+          </span>
+        </a>
+        <div class="now-cell">
+          <span class="now-label"><.icon name="clock" /> Local time</span>
+          <span class="now-main now-clock" data-clock="Asia/Kolkata">{local_time()}</span>
+          <span class="now-sub">{profile().timezone()}</span>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section id="stampede" class="section">
+    <div class="container">
+      <.section_head eyebrow="Library" title="Stampede">
+        {lib.tagline}
+      </.section_head>
+
+      <div class="showcase" data-reveal>
+        <div class="showcase-copy">
+          <div class="meta-row">
+            <span class="tag tag-accent">v{@snapshot.library.version}</span>
+            <span class="meta"><.icon name="star" /> {number(@snapshot.library.stars)}</span>
+            <span class="meta">
+              <.icon name="download" /> {number(@snapshot.library.downloads)} downloads
+            </span>
+            <span class="meta"><.icon name="package" /> Hex</span>
+          </div>
+          <p class="showcase-desc">{lib.description}</p>
+          <ul class="feature-list">
+            <li :for={{flag, what} <- lib.features}>
+              <span class="check" aria-hidden="true"></span>
+              <span><code :if={flag}>{flag}</code> {what}</span>
+            </li>
+          </ul>
+          <div class="chips">
+            <span :for={t <- lib.tags} class="chip">{t}</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href={lib.github}>
+              <.icon name="github" /> Source
+            </a>
+            <a class="btn" href={lib.docs}><.icon name="book-open" /> Docs</a>
+            <a class="btn" href={lib.hex}><.icon name="package" /> Hex</a>
+          </div>
+        </div>
+
+        <div class="terminal" aria-label="Example Stampede run" data-reveal>
+          <div class="terminal-bar">
+            <span></span><span></span><span></span>
+            <p>loadtest/lobby.exs</p>
+          </div>
+          <pre><code><span class="ln" style="--l: 0"><span class="t-dim"># mix.exs</span></span><span class="ln" style="--l: 1">&#123;<span class="t-atom">:stampede</span>, <span class="t-str">"~&gt; {minor_version(@snapshot.library.version)}"</span>&#125;</span><span class="ln" style="--l: 2"> </span><span class="ln cmd" style="--l: 3"><span class="t-prompt">$</span> <span class="type">mix stampede.run loadtest/lobby.exs</span><span class="caret" aria-hidden="true"></span></span><span class="ln out" style="--l: 4"><span class="t-bold">Demo.Chat ran for 15.0s</span></span><span class="ln out" style="--l: 5"><span class="t-dim">  metric          count   rate/s      p95</span></span><span class="ln out" style="--l: 6">  channel.join     6000   399.89  31.90ms</span><span class="ln out" style="--l: 7">  channel.push   139348  9287.39  11.27ms</span><span class="ln out" style="--l: 8">  ws.connect       6000   399.89  35.25ms</span><span class="ln out" style="--l: 9"><span class="t-dim">  thresholds</span></span><span class="ln out" style="--l: 10">    <span class="t-ok">pass</span>  channel.join p95 &lt;= 500ms</span><span class="ln out" style="--l: 11">    <span class="t-ok">pass</span>  iteration.errors count &lt;= 0</span></code></pre>
+        </div>
+      </div>
+
+      <div class="results" data-stagger>
+        <div :for={{target, machine, held, unit} <- lib.results} class="result spot">
+          <p class="result-num" data-count>{held}</p>
+          <p class="result-unit">{unit}</p>
+          <p class="result-target">{target}</p>
+          <p class="result-machine">{machine}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="open-source" class="section">
+    <div class="container">
+      <.section_head eyebrow="Open source" title="Upstream contributions">
+        Bugs fixed in the projects other teams depend on. Numbers are pulled live from GitHub.
+        <:action>
+          <a class="btn btn-small" href={search_url([])}>
+            All PRs on GitHub <.icon name="arrow-up-right" />
+          </a>
+        </:action>
+      </.section_head>
+
+      <.contribution_graph calendar={@calendar} />
+
+      <div class="highlights" data-stagger>
+        <article :for={project <- @highlights} class="project-card spot">
+          <header class="project-head">
+            <img
+              :if={project.logo}
+              src={project.logo}
+              alt=""
+              width="44"
+              height="44"
+              class="logo logo-lg"
+            />
+            <div class="project-id">
+              <h3>{project.name}</h3>
+              <p class="muted">{inline_code(project.subtitle)}</p>
+            </div>
+            <div class="pills">
+              <span class="pill pill-merged">
+                <.icon name="git-merge" /> {project.merged} merged
+              </span>
+              <span :if={project.open > 0} class="pill">
+                <.icon name="git-pull-request" /> {project.open} in review
+              </span>
+              <span :if={project.issues > 0} class="pill">
+                <.icon name="circle-dot" /> {project.issues} issues
+              </span>
+            </div>
+          </header>
+
+          <ul class="picks">
+            <li :for={item <- project.highlights}>
+              <a class="pick spot" href={item.pr.url}>
+                <span class="pick-meta">
+                  <span class="pr-ref">{PullRequest.ref(item.pr)}</span>
+                  <.status state={item.state} />
+                </span>
+                <span class="pick-title">{inline_code(item.headline)}</span>
+                <span class="pick-note">{inline_code(item.note)}</span>
+                <span class="pick-go">
+                  View pull request <.icon name="arrow-up-right" />
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <footer class="project-foot">
+            <div :if={project.tech != []} class="chips chips-sm">
+              <span :for={t <- project.tech} class="chip">{t}</span>
+            </div>
+            <a class="project-link" href={search_url(project.owners)}>
+              All {project.name} PRs <.icon name="arrow-up-right" />
+            </a>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="container">
+      <.section_head eyebrow="Experience" title="Where I've worked" />
+      <ol class="timeline" data-stagger>
+        <li :for={job <- profile().experience()} class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="card spot">
+            <header class="entry-head">
+              <div>
+                <h4>{job.role}</h4>
+                <p class="muted">{job.company}</p>
+              </div>
+              <span class="date-chip">{job.date}</span>
+            </header>
+            <ul class="bullets">
+              <li :for={point <- job.points}>{point}</li>
+            </ul>
+            <div class="chips chips-sm">
+              <span :for={t <- job.stack} class="chip">{t}</span>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <.section_head eyebrow="Projects" title="Things I've built" />
+      <div class="project-grid" data-stagger>
+        <article :for={project <- profile().projects()} class="card build-card spot">
+          <header class="entry-head">
+            <div>
+              <h4>{project.name}</h4>
+              <p class="muted">{project.what}</p>
+            </div>
+            <div class="build-links">
+              <a
+                :if={project[:source]}
+                class="icon-btn bordered"
+                href={project.source}
+                aria-label={"#{project.name} source"}
+              >
+                <.icon name="github" />
+              </a>
+              <a class="icon-btn bordered" href={project.url} aria-label={"Visit #{project.name}"}>
+                <.icon name="arrow-up-right" />
+              </a>
+            </div>
+          </header>
+          <ul class="bullets">
+            <li :for={point <- project.points}>{point}</li>
+          </ul>
+          <div class="chips chips-sm">
+            <span :for={t <- project.stack} class="chip">{t}</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="background" class="section">
+    <div class="container">
+      <.section_head eyebrow="Background" title="Education and skills" />
+      <% edu = profile().education() %>
+      <div class="background-grid" data-stagger>
+        <article class="card edu-card">
+          <p class="eyebrow">Education</p>
+          <h4>{edu.school}</h4>
+          <p>{edu.degree}</p>
+          <p class="muted">{edu.date} · {edu.location}</p>
+          <p class="muted small">{edu.coursework}</p>
+        </article>
+        <article class="card">
+          <div :for={{label, items} <- profile().skills()} class="skill-group">
+            <p class="eyebrow">{label}</p>
+            <div class="chips">
+              <span :for={item <- items} class="chip">{item}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta" data-reveal>
+        <div>
+          <h2>Let's <span>talk</span></h2>
+          <p>
+            For roles, collaborations, or a bug you can't pin down, email is the fastest way to reach me.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={"mailto:#{profile().email()}"}>
+            <.icon name="mail" /> {profile().email()}
+          </a>
+          <a class="btn" href={profile().linkedin()}><.icon name="linkedin" /> LinkedIn</a>
+          <a class="btn" href={profile().x()}><.icon name="x" /> X</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© {@snapshot.fetched_at.year} Mandar Joshi</p>
+    <p>
+      Built with Elixir and Phoenix. GitHub data refreshed hourly, last on
+      <time datetime={DateTime.to_iso8601(@snapshot.fetched_at)}>
+        {Calendar.strftime(@snapshot.fetched_at, "%-d %b %Y")}
+      </time>
+      · <a href="https://github.com/mandar1045/mandarjoshi-portfolio">Source</a>
+    </p>
+  </div>
+</footer>
