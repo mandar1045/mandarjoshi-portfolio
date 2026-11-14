@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", weight: ["40
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] });
 
 const description =
-  "Mandar Joshi is a software engineer contributing to Supabase, FOSSology and Elixir, and the author of Stampede, a load-testing library for Phoenix.";
+  "Mandar Joshi is a software engineer contributing to Supabase, FOSSology and Elixir, and the author of two Elixir libraries: Stampede, for load testing Phoenix, and Infusion, an SDK generator.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mandarjoshi.me"),
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "Mandar Joshi · Software Engineer",
-    description: "Open source work on Supabase, FOSSology and Elixir, and Stampede, a load-testing library for Phoenix.",
+    description: "Open source work on Supabase, FOSSology and Elixir, plus Stampede, a load-testing library for Phoenix, and Infusion, an Elixir SDK generator.",
     url: "https://mandarjoshi.me",
     type: "website",
     images: ["/images/profile.jpg"],

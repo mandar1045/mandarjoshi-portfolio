@@ -10,11 +10,15 @@ export type PullRequest = {
 /** [YYYY-MM-DD, contribution count, level 0-4] */
 export type CalendarDay = [string, number, number];
 
+export type LibraryStats = { stars: number; version: string; downloads: number; releasedOn: string | null };
+
 export type Snapshot = {
   fetchedAt: string;
   merged: PullRequest[];
   open: PullRequest[];
   issues: Record<string, number>;
-  library: { stars: number; version: string; downloads: number; releasedOn: string | null };
+  /** Stampede */
+  library: LibraryStats;
+  infusion: LibraryStats;
   calendar: CalendarDay[] | null;
 };

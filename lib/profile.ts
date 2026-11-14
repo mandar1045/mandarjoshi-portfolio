@@ -40,6 +40,45 @@ export const library = {
   ],
 };
 
+export const infusion = {
+  name: "Infusion",
+  package: "infusion",
+  tagline: "Official-quality Elixir SDKs, generated from any OpenAPI spec.",
+  description:
+    "API companies generate their SDKs with Stainless, Fern or Speakeasy, and none of those support Elixir. Infusion turns a spec into a complete Mix project: a struct for every schema, a function for every endpoint, and a small shared runtime, infusion_runtime, that handles HTTP, retries, streaming and pagination for every SDK it generates.",
+  github: "https://github.com/mandar1045/infusion",
+  hex: "https://hex.pm/packages/infusion",
+  runtime: "https://hex.pm/packages/infusion_runtime",
+  docs: "https://hexdocs.pm/infusion",
+  tags: ["Elixir", "OpenAPI", "Code generation", "Req", "SSE"],
+  results: [
+    {
+      target: "OpenAI, Stripe, GitHub, Twilio and Cloudflare specs",
+      machine: "every SDK compiles with zero warnings",
+      held: "6,256",
+      unit: "API operations generated",
+    },
+    {
+      target: "Cloudflare's 28 MB spec, 3,778 operations",
+      machine: "10,253 modules written and formatted",
+      held: "13 s",
+      unit: "to generate the whole SDK",
+    },
+    {
+      target: "six pagination styles, worked out from each spec",
+      machine: "verified live against the GitHub API",
+      held: "888",
+      unit: "list endpoints paginated automatically",
+    },
+  ],
+  features: [
+    { flag: "mix infusion.gen", what: "writes a complete SDK project from a spec file or URL" },
+    { flag: "_stream", what: "functions return Server-Sent Events as a lazy Elixir Stream" },
+    { flag: "_all", what: "functions read every page of a list, fetching pages only as you go" },
+    { flag: null, what: "Retries like the official SDKs, and one typed error struct for every API" },
+  ],
+};
+
 export const experience = [
   {
     role: "Software Developer Intern",

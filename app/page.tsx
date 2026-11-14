@@ -17,7 +17,7 @@ import {
   shortDate,
 } from "@/lib/format";
 import { getSnapshot } from "@/lib/github";
-import { education, experience, library, profile, projects as builds, skills } from "@/lib/profile";
+import { education, experience, infusion, library, profile, projects as builds, skills } from "@/lib/profile";
 
 // Rebuilt at most once an hour with fresh GitHub and Hex data.
 export const revalidate = 3600;
@@ -32,6 +32,12 @@ export default async function Home() {
   const calendar = buildCalendar(snapshot.calendar);
   const user = profile.githubUser;
   const fetched = snapshot.fetchedAt.slice(0, 10);
+  // The library released most recently goes in the "Latest release" card.
+  const releases = [
+    { name: library.name, hex: library.hex, stats: snapshot.library },
+    { name: infusion.name, hex: infusion.hex, stats: snapshot.infusion },
+  ];
+  const newest = releases.reduce((a, b) => ((b.stats.releasedOn ?? "") > (a.stats.releasedOn ?? "") ? b : a));
 
   return (
     <>
@@ -46,6 +52,7 @@ export default async function Home() {
           </a>
           <nav className="nav-links" aria-label="Sections">
             <a href="#stampede">Stampede</a>
+            <a href="#infusion">Infusion</a>
             <a href="#open-source">Open source</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
@@ -95,7 +102,8 @@ export default async function Home() {
               <p className="hero-lede">
                 I fix bugs in Supabase Realtime, the Elixir formatter and FOSSology, covering auth security, API
                 performance, memory safety and developer tooling. I also wrote and maintain{" "}
-                <a href="#stampede">Stampede</a>, a load-testing library for Phoenix.
+                <a href="#stampede">Stampede</a>, a load-testing library for Phoenix, and{" "}
+                <a href="#infusion">Infusion</a>, which generates Elixir SDKs from OpenAPI specs.
               </p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href={profile.github}>
@@ -128,13 +136,15 @@ export default async function Home() {
 
           <div className="container">
             <section className="now" aria-label="What I'm up to" data-stagger="">
-              <a className="now-cell spot" href={library.hex}>
+              <a className="now-cell spot" href={newest.hex}>
                 <span className="now-label">
                   <Icon name="package" /> Latest release
                 </span>
-                <span className="now-main">Stampede v{snapshot.library.version}</span>
+                <span className="now-main">
+                  {newest.name} v{newest.stats.version}
+                </span>
                 <span className="now-sub">
-                  on Hex{snapshot.library.releasedOn && <span> · {ago(snapshot.library.releasedOn)}</span>}
+                  on Hex{newest.stats.releasedOn && <span> · {ago(newest.stats.releasedOn)}</span>}
                 </span>
               </a>
               {latest.merged && (
@@ -282,6 +292,123 @@ export default async function Home() {
 
             <div className="results" data-stagger="">
               {library.results.map((r) => (
+                <div key={r.held} className="result spot">
+                  <p className="result-num" data-count="">
+                    {r.held}
+                  </p>
+                  <p className="result-unit">{r.unit}</p>
+                  <p className="result-target">{r.target}</p>
+                  <p className="result-machine">{r.machine}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="infusion" className="section">
+          <div className="container">
+            <SectionHead eyebrow="Library" title="Infusion">
+              {infusion.tagline}
+            </SectionHead>
+
+            <div className="showcase" data-reveal="">
+              <div className="showcase-copy">
+                <div className="meta-row">
+                  <span className="tag tag-accent">v{snapshot.infusion.version}</span>
+                  <span className="meta">
+                    <Icon name="star" /> {number(snapshot.infusion.stars)}
+                  </span>
+                  <span className="meta">
+                    <Icon name="package" /> 2 packages on Hex
+                  </span>
+                </div>
+                <p className="showcase-desc">{infusion.description}</p>
+                <ul className="feature-list">
+                  {infusion.features.map(({ flag, what }) => (
+                    <li key={what}>
+                      <span className="check" aria-hidden="true" />
+                      <span>
+                        {flag && <code>{flag}</code>} {what}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="chips">
+                  {infusion.tags.map((t) => (
+                    <span key={t} className="chip">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="hero-actions">
+                  <a className="btn btn-primary" href={infusion.github}>
+                    <Icon name="github" /> Source
+                  </a>
+                  <a className="btn" href={infusion.docs}>
+                    <Icon name="book-open" /> Docs
+                  </a>
+                  <a className="btn" href={infusion.hex}>
+                    <Icon name="package" /> Hex
+                  </a>
+                  <a className="btn" href={infusion.runtime}>
+                    <Icon name="package" /> Runtime
+                  </a>
+                </div>
+              </div>
+
+              <div className="terminal" aria-label="Generating and using a GitHub SDK with Infusion" data-reveal="">
+                <div className="terminal-bar">
+                  <span />
+                  <span />
+                  <span />
+                  <p>github_sdk</p>
+                </div>
+                <pre>
+                  <code>
+                    <span className="ln" style={v({ "--l": 0 })}>
+                      <span className="t-dim"># mix.exs</span>
+                    </span>
+                    <span className="ln" style={v({ "--l": 1 })}>
+                      {"{"}
+                      <span className="t-atom">:infusion</span>, <span className="t-str">{`"~> ${minorVersion(snapshot.infusion.version)}"`}</span>, only: <span className="t-atom">:dev</span>
+                      {"}"}
+                    </span>
+                    <span className="ln" style={v({ "--l": 2 })}>
+                      {" "}
+                    </span>
+                    <span className="ln cmd" style={v({ "--l": 3 })}>
+                      <span className="t-prompt">$</span> <span className="type">mix infusion.gen api.github.com.json --name GitHub</span>
+                      <span className="caret" aria-hidden="true" />
+                    </span>
+                    <span className="ln out" style={v({ "--l": 4 })}>
+                      <span className="t-bold">Generated GitHub in github_sdk/</span>
+                    </span>
+                    <span className="ln out" style={v({ "--l": 5 })}>
+                      {"  1281 operations, 1015 schemas, 3058 files"}
+                    </span>
+                    <span className="ln" style={v({ "--l": 6 })}>
+                      {" "}
+                    </span>
+                    <span className="ln out" style={v({ "--l": 7 })}>
+                      <span className="t-prompt">iex&gt;</span> GitHub.Repos.get(<span className="t-str">&quot;elixir-lang&quot;</span>, <span className="t-str">&quot;elixir&quot;</span>)
+                    </span>
+                    <span className="ln out" style={v({ "--l": 8 })}>
+                      {"{"}<span className="t-atom">:ok</span>, %GitHub.Schemas.FullRepository{"{...}"}{"}"}
+                    </span>
+                    <span className="ln out" style={v({ "--l": 9 })}>
+                      <span className="t-prompt">iex&gt;</span> GitHub.Repos.list_for_org_all!(<span className="t-str">&quot;erlang&quot;</span>) |&gt; Enum.count()
+                    </span>
+                    <span className="ln out" style={v({ "--l": 10 })}>
+                      <span className="t-ok">23</span>
+                      <span className="t-dim">{"  # 3 pages, fetched as the stream is read"}</span>
+                    </span>
+                  </code>
+                </pre>
+              </div>
+            </div>
+
+            <div className="results" data-stagger="">
+              {infusion.results.map((r) => (
                 <div key={r.held} className="result spot">
                   <p className="result-num" data-count="">
                     {r.held}

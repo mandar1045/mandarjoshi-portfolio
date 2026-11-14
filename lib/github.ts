@@ -3,10 +3,11 @@
 // can't be reached (or rate-limits us), the bundled snapshot is used instead.
 
 import snapshotJson from "./data/snapshot.json";
-import type { CalendarDay, PullRequest, Snapshot } from "./types";
+import type { CalendarDay, LibraryStats, PullRequest, Snapshot } from "./types";
 
 const USER = "mandar1045";
 const PACKAGE = "stampede";
+const INFUSION = "infusion";
 const REVALIDATE = 3600;
 const PER_PAGE = 100;
 const MAX_PAGES = 5;
@@ -141,7 +142,8 @@ export function bundledSnapshot(): Snapshot {
     merged: PullRequest[];
     open: PullRequest[];
     issues: Record<string, number>;
-    library: { stars: number; version: string; downloads: number; released_on?: string | null };
+    library: BundledLibrary;
+    infusion?: BundledLibrary;
     calendar?: CalendarDay[] | null;
   };
   return {
@@ -149,21 +151,50 @@ export function bundledSnapshot(): Snapshot {
     merged: s.merged,
     open: s.open,
     issues: s.issues,
-    library: {
-      stars: s.library.stars,
-      version: s.library.version,
-      downloads: s.library.downloads,
-      releasedOn: s.library.released_on ?? null,
-    },
+    library: fromBundle(s.library),
+    infusion: fromBundle(s.infusion ?? { stars: 0, version: "0.1.0", downloads: 0, released_on: "2026-11-14" }),
     calendar: s.calendar ?? null,
   };
 }
+
+type BundledLibrary = { stars: number; version: string; downloads: number; released_on?: string | null };
+
+const fromBundle = (l: BundledLibrary): LibraryStats => ({
+  stars: l.stars,
+  version: l.version,
+  downloads: l.downloads,
+  releasedOn: l.released_on ?? null,
+});
 
 type Hex = {
   latest_stable_version: string;
   downloads?: { all?: number };
   releases?: { version: string; inserted_at: string }[];
 };
+
+const getRepo = (name: string) =>
+  getJSON<{ stargazers_count: number }>(`https://api.github.com/repos/${USER}/${name}`, githubHeaders());
+
+const getHex = (name: string) =>
+  getJSON<Hex>(`https://hex.pm/api/packages/${name}`, {
+    accept: "application/json",
+    "user-agent": "mandarjoshi-portfolio",
+  });
+
+/** A library's live numbers, each falling back to the bundled snapshot. */
+function libraryStats(
+  repo: { stargazers_count: number } | null,
+  hex: Hex | null,
+  fallback: LibraryStats,
+): LibraryStats {
+  const release = hex?.releases?.find((r) => r.version === hex.latest_stable_version);
+  return {
+    stars: repo?.stargazers_count ?? fallback.stars,
+    version: hex?.latest_stable_version ?? fallback.version,
+    downloads: hex?.downloads?.all ?? fallback.downloads,
+    releasedOn: release ? release.inserted_at.slice(0, 10) : fallback.releasedOn,
+  };
+}
 
 function settled<T>(result: PromiseSettledResult<T>, what: string): T | null {
   if (result.status === "fulfilled") return result.value;
@@ -179,16 +210,15 @@ export async function getSnapshot(): Promise<Snapshot> {
   const fallback = bundledSnapshot();
   const scope = `author:${USER} -user:${USER}`;
 
-  const [mergedR, openR, issuesR, repoR, hexR, calendarR] = await Promise.allSettled([
+  const [mergedR, openR, issuesR, repoR, hexR, calendarR, infusionRepoR, infusionHexR] = await Promise.allSettled([
     search(`is:pr is:merged ${scope}`),
     search(`is:pr is:open ${scope}`),
     search(`is:issue ${scope}`),
-    getJSON<{ stargazers_count: number }>(`https://api.github.com/repos/${USER}/${PACKAGE}`, githubHeaders()),
-    getJSON<Hex>(`https://hex.pm/api/packages/${PACKAGE}`, {
-      accept: "application/json",
-      "user-agent": "mandarjoshi-portfolio",
-    }),
+    getRepo(PACKAGE),
+    getHex(PACKAGE),
     fetchCalendar(),
+    getRepo(INFUSION),
+    getHex(INFUSION),
   ]);
 
   const merged = settled(mergedR, "merged PRs");
@@ -196,6 +226,8 @@ export async function getSnapshot(): Promise<Snapshot> {
   const issues = settled(issuesR, "issues");
   const repo = settled(repoR, "repo stats");
   const hex = settled(hexR, "Hex stats");
+  const infusionRepo = settled(infusionRepoR, "Infusion repo stats");
+  const infusionHex = settled(infusionHexR, "Infusion Hex stats");
   const calendar = settled(calendarR, "contribution calendar");
 
   let issueCounts = fallback.issues;
@@ -204,7 +236,6 @@ export async function getSnapshot(): Promise<Snapshot> {
     for (const item of issues) issueCounts[repoName(item)] = (issueCounts[repoName(item)] ?? 0) + 1;
   }
 
-  const release = hex?.releases?.find((r) => r.version === hex.latest_stable_version);
   const anyLive = [merged, open, issues, repo, hex].some((x) => x !== null);
 
   return {
@@ -212,12 +243,8 @@ export async function getSnapshot(): Promise<Snapshot> {
     merged: merged ? merged.map((i) => toPr(i, "merged")).sort(newestFirst) : fallback.merged,
     open: open ? open.map((i) => toPr(i, "open")).sort(newestFirst) : fallback.open,
     issues: issueCounts,
-    library: {
-      stars: repo?.stargazers_count ?? fallback.library.stars,
-      version: hex?.latest_stable_version ?? fallback.library.version,
-      downloads: hex?.downloads?.all ?? fallback.library.downloads,
-      releasedOn: release ? release.inserted_at.slice(0, 10) : fallback.library.releasedOn,
-    },
+    library: libraryStats(repo, hex, fallback.library),
+    infusion: libraryStats(infusionRepo, infusionHex, fallback.infusion),
     calendar: calendar ?? fallback.calendar,
   };
 }
