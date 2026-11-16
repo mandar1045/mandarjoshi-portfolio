@@ -5,6 +5,24 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduceMotion) root.classList.add("anim");
 
+  // Count this page view for the private /admin dashboard. No cookies; the
+  // server records the referrer, approximate location and device.
+  if (!location.pathname.startsWith("/admin") && !navigator.webdriver) {
+    try {
+      const params = new URLSearchParams(location.search);
+      const body = JSON.stringify({
+        path: location.pathname,
+        referrer: document.referrer,
+        tag: params.get("utm_source") || params.get("ref") || "",
+      });
+      if (!navigator.sendBeacon || !navigator.sendBeacon("/api/visit", new Blob([body], { type: "application/json" }))) {
+        fetch("/api/visit", { method: "POST", body, keepalive: true, headers: { "content-type": "application/json" } });
+      }
+    } catch {
+      // Counting a visit must never break the page.
+    }
+  }
+
   // Children of [data-stagger] reveal one after another.
   document.querySelectorAll("[data-stagger]").forEach((group) => {
     Array.from(group.children).forEach((child, i) => child.style.setProperty("--i", i));

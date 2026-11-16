@@ -66,8 +66,13 @@ const HIGHLIGHTS: { name: string; subtitle: string; picks: [string, string, stri
   },
   {
     name: "Elixir",
-    subtitle: "The language's code formatter, used by every `mix format` run",
+    subtitle: "The language itself: the standard library and `mix format`",
     picks: [
+      [
+        "elixir-lang/elixir#16135",
+        "Zipped and cycled streams leaked resources when something raised",
+        "`Stream.zip` closed streams from the previous step, restarting resources just to close them. Now each stream closes once, in its current state.",
+      ],
       [
         "elixir-lang/elixir#16004",
         "The formatter turned valid code into code that wouldn't parse",
@@ -78,17 +83,17 @@ const HIGHLIGHTS: { name: string; subtitle: string; picks: [string, string, stri
         "Formatting `!!x in y` changed what the code did",
         "It printed `!(!x in y)`, which parses differently. Now it prints `!((!x) in y)`.",
       ],
-      [
-        "elixir-lang/elixir#16009",
-        "Comments made `mix format` give different output on each run",
-        "Formatting Elixir's own lib with added comments went from about 20 unstable files to none.",
-      ],
     ],
   },
   {
     name: "FOSSology",
     subtitle: "License compliance toolkit, a Linux Foundation project",
     picks: [
+      [
+        "fossology/fossology#3990",
+        "Any uploader could run shell commands through a crafted ISO",
+        "Filenames inside an ISO went into an `isoinfo` command unescaped, so a name like `x'$(id)'y.txt` ran as the agent user. They're now escaped first.",
+      ],
       [
         "fossology/fossology#3936",
         "Buffer overflow in the scheduler's agent setup",
