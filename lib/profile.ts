@@ -79,6 +79,27 @@ export const infusion = {
   ],
 };
 
+// SDKs generated with Infusion and published as their own packages.
+export const builtWithInfusion = {
+  twilio: {
+    name: "twilio",
+    api: "Twilio",
+    logo: "/images/orgs/twilio.png",
+    tagline: "Twilio's REST API for Elixir",
+    description:
+      "Send messages, make calls, buy phone numbers and read recordings and usage from Elixir. Every operation in Twilio's core API has a function with docs and typespecs, and every response decodes into a struct. It also covers what the API doesn't: checking that webhooks really come from Twilio, and access tokens for Twilio's client SDKs.",
+    github: "https://github.com/mandar1045/twilio",
+    hex: "https://hex.pm/packages/twilio",
+    docs: "https://hexdocs.pm/twilio",
+    spec: "https://github.com/twilio/twilio-oai",
+    facts: [
+      { value: "197", label: "operations from Twilio's core API (2010-04-01)" },
+      { value: "1", label: "command to regenerate when Twilio changes its spec" },
+    ],
+    features: ["Typed structs", "Retries", "Lazy pagination", "Webhook validation", "Access tokens"],
+  },
+};
+
 export const experience = [
   {
     role: "Software Developer Intern",

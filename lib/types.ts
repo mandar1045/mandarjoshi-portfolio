@@ -20,5 +20,7 @@ export type Snapshot = {
   /** Stampede */
   library: LibraryStats;
   infusion: LibraryStats;
+  /** The Twilio SDK generated with Infusion */
+  twilio: LibraryStats;
   calendar: CalendarDay[] | null;
 };

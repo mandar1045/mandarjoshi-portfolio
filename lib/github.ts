@@ -8,6 +8,7 @@ import type { CalendarDay, LibraryStats, PullRequest, Snapshot } from "./types";
 const USER = "mandar1045";
 const PACKAGE = "stampede";
 const INFUSION = "infusion";
+const TWILIO = "twilio";
 const REVALIDATE = 3600;
 const PER_PAGE = 100;
 const MAX_PAGES = 5;
@@ -144,6 +145,7 @@ export function bundledSnapshot(): Snapshot {
     issues: Record<string, number>;
     library: BundledLibrary;
     infusion?: BundledLibrary;
+    twilio?: BundledLibrary;
     calendar?: CalendarDay[] | null;
   };
   return {
@@ -153,6 +155,7 @@ export function bundledSnapshot(): Snapshot {
     issues: s.issues,
     library: fromBundle(s.library),
     infusion: fromBundle(s.infusion ?? { stars: 0, version: "0.1.0", downloads: 0, released_on: "2026-11-14" }),
+    twilio: fromBundle(s.twilio ?? { stars: 0, version: "0.2.0", downloads: 0, released_on: null }),
     calendar: s.calendar ?? null,
   };
 }
@@ -210,7 +213,8 @@ export async function getSnapshot(): Promise<Snapshot> {
   const fallback = bundledSnapshot();
   const scope = `author:${USER} -user:${USER}`;
 
-  const [mergedR, openR, issuesR, repoR, hexR, calendarR, infusionRepoR, infusionHexR] = await Promise.allSettled([
+  const [mergedR, openR, issuesR, repoR, hexR, calendarR, infusionRepoR, infusionHexR, twilioRepoR, twilioHexR] =
+    await Promise.allSettled([
     search(`is:pr is:merged ${scope}`),
     search(`is:pr is:open ${scope}`),
     search(`is:issue ${scope}`),
@@ -219,6 +223,8 @@ export async function getSnapshot(): Promise<Snapshot> {
     fetchCalendar(),
     getRepo(INFUSION),
     getHex(INFUSION),
+    getRepo(TWILIO),
+    getHex(TWILIO),
   ]);
 
   const merged = settled(mergedR, "merged PRs");
@@ -228,6 +234,8 @@ export async function getSnapshot(): Promise<Snapshot> {
   const hex = settled(hexR, "Hex stats");
   const infusionRepo = settled(infusionRepoR, "Infusion repo stats");
   const infusionHex = settled(infusionHexR, "Infusion Hex stats");
+  const twilioRepo = settled(twilioRepoR, "Twilio SDK repo stats");
+  const twilioHex = settled(twilioHexR, "Twilio SDK Hex stats");
   const calendar = settled(calendarR, "contribution calendar");
 
   let issueCounts = fallback.issues;
@@ -245,6 +253,7 @@ export async function getSnapshot(): Promise<Snapshot> {
     issues: issueCounts,
     library: libraryStats(repo, hex, fallback.library),
     infusion: libraryStats(infusionRepo, infusionHex, fallback.infusion),
+    twilio: libraryStats(twilioRepo, twilioHex, fallback.twilio),
     calendar: calendar ?? fallback.calendar,
   };
 }

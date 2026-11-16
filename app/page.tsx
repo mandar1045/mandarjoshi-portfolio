@@ -17,7 +17,16 @@ import {
   shortDate,
 } from "@/lib/format";
 import { getSnapshot } from "@/lib/github";
-import { education, experience, infusion, library, profile, projects as builds, skills } from "@/lib/profile";
+import {
+  builtWithInfusion,
+  education,
+  experience,
+  infusion,
+  library,
+  profile,
+  projects as builds,
+  skills,
+} from "@/lib/profile";
 
 // Rebuilt at most once an hour with fresh GitHub and Hex data.
 export const revalidate = 3600;
@@ -26,6 +35,7 @@ const v = (vars: Record<string, string | number>) => vars as CSSProperties;
 
 export default async function Home() {
   const snapshot = await getSnapshot();
+  const twilio = builtWithInfusion.twilio;
   const projects = getProjects(snapshot);
   const highlights = getHighlights(snapshot);
   const latest = getLatest(snapshot);
@@ -418,6 +428,116 @@ export default async function Home() {
                   <p className="result-machine">{r.machine}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="built" id="built-with-infusion">
+              <h3 className="subhead">Built with Infusion</h3>
+              <article className="sdk-card spot" data-reveal="">
+                <div className="sdk-copy">
+                  <header className="sdk-head">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={twilio.logo} alt="" width={44} height={44} className="logo logo-lg" />
+                    <div>
+                      <h4>
+                        <a href={twilio.github}>{twilio.name}</a>
+                      </h4>
+                      <p className="muted">{twilio.tagline}</p>
+                    </div>
+                    <span className="tag tag-accent">v{snapshot.twilio.version}</span>
+                  </header>
+                  <div className="meta-row">
+                    <span className="meta">
+                      <Icon name="star" /> {number(snapshot.twilio.stars)}
+                    </span>
+                    <span className="meta">
+                      <Icon name="download" /> {number(snapshot.twilio.downloads)} downloads
+                    </span>
+                    {snapshot.twilio.releasedOn && (
+                      <span className="meta">
+                        <Icon name="package" /> released {ago(snapshot.twilio.releasedOn)}
+                      </span>
+                    )}
+                  </div>
+                  <p className="sdk-desc">{twilio.description}</p>
+                  <dl className="sdk-facts">
+                    {twilio.facts.map((f) => (
+                      <div key={f.label}>
+                        <dt>{f.value}</dt>
+                        <dd>{f.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <div className="chips chips-sm">
+                    {twilio.features.map((t) => (
+                      <span key={t} className="chip">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="hero-actions">
+                    <a className="btn btn-primary" href={twilio.github}>
+                      <Icon name="github" /> Source
+                    </a>
+                    <a className="btn" href={twilio.hex}>
+                      <Icon name="package" /> Hex
+                    </a>
+                    <a className="btn" href={twilio.docs}>
+                      <Icon name="book-open" /> Docs
+                    </a>
+                    <a className="project-link" href={twilio.spec}>
+                      Twilio&apos;s OpenAPI spec <Icon name="arrow-up-right" />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="terminal sdk-terminal" aria-label="Sending a message with the Twilio SDK" data-reveal="">
+                  <div className="terminal-bar">
+                    <span />
+                    <span />
+                    <span />
+                    <p>twilio</p>
+                  </div>
+                  <pre>
+                    <code>
+                      <span className="ln" style={v({ "--l": 0 })}>
+                        <span className="t-dim"># mix.exs</span>
+                      </span>
+                      <span className="ln" style={v({ "--l": 1 })}>
+                        {"{"}
+                        <span className="t-atom">:twilio</span>, <span className="t-str">{`"~> ${minorVersion(snapshot.twilio.version)}"`}</span>
+                        {"}"}
+                      </span>
+                      <span className="ln" style={v({ "--l": 2 })}>
+                        {" "}
+                      </span>
+                      <span className="ln" style={v({ "--l": 3 })}>
+                        <span className="t-prompt">iex&gt;</span> {"{"}<span className="t-atom">:ok</span>, message{"}"} =
+                      </span>
+                      <span className="ln" style={v({ "--l": 4 })}>
+                        {"...>   Twilio.Messages.create("}
+                      </span>
+                      <span className="ln" style={v({ "--l": 5 })}>
+                        {"...>     to: "}<span className="t-str">&quot;+15558675310&quot;</span>,
+                      </span>
+                      <span className="ln" style={v({ "--l": 6 })}>
+                        {"...>     from: "}<span className="t-str">&quot;+15017122661&quot;</span>,
+                      </span>
+                      <span className="ln" style={v({ "--l": 7 })}>
+                        {"...>     body: "}<span className="t-str">&quot;Hello from Elixir&quot;</span>
+                      </span>
+                      <span className="ln" style={v({ "--l": 8 })}>
+                        {"...>   )"}
+                      </span>
+                      <span className="ln" style={v({ "--l": 9 })}>
+                        <span className="t-prompt">iex&gt;</span> message.status
+                      </span>
+                      <span className="ln" style={v({ "--l": 10 })}>
+                        <span className="t-str">&quot;queued&quot;</span>
+                      </span>
+                    </code>
+                  </pre>
+                </div>
+              </article>
             </div>
           </div>
         </section>
