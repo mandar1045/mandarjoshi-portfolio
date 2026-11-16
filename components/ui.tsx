@@ -13,7 +13,7 @@ export function SectionHead({
   action?: ReactNode;
 }) {
   return (
-    <header className="section-head" data-reveal="">
+    <header className="section-head">
       <div>
         <p className="eyebrow">{eyebrow}</p>
         <h2>{title}</h2>

@@ -52,9 +52,6 @@ export default async function Home() {
   return (
     <>
       <header className="nav">
-        <div className="progress" aria-hidden="true">
-          <span />
-        </div>
         <div className="container nav-inner">
           <a href="#top" className="brand">
             <span className="brand-mark">MJ</span>
@@ -82,11 +79,7 @@ export default async function Home() {
       </header>
 
       <main id="top">
-        <section id="about" className="hero" data-parallax="">
-          <div className="hero-glows" aria-hidden="true">
-            <span className="g1" />
-            <span className="g2" />
-          </div>
+        <section id="about" className="hero">
           <div className="container hero-grid">
             <div className="hero-copy">
               <p className="eyebrow-pill">
@@ -104,9 +97,7 @@ export default async function Home() {
               <h1>Mandar Joshi</h1>
               <p className="hero-title">
                 Software engineer working on{" "}
-                <span className="hl rotator" data-rotate="backend systems|distributed systems|realtime services">
-                  backend systems
-                </span>
+                <span className="hl">backend systems</span>
                 <br className="br-wide" /> and the <span className="hl">open source infrastructure</span> they run on.
               </p>
               <p className="hero-lede">
@@ -145,8 +136,8 @@ export default async function Home() {
           </div>
 
           <div className="container">
-            <section className="now" aria-label="What I'm up to" data-stagger="">
-              <a className="now-cell spot" href={newest.hex}>
+            <section className="now" aria-label="What I'm up to">
+              <a className="now-cell" href={newest.hex}>
                 <span className="now-label">
                   <Icon name="package" /> Latest release
                 </span>
@@ -158,7 +149,7 @@ export default async function Home() {
                 </span>
               </a>
               {latest.merged && (
-                <a className="now-cell spot" href={latest.merged.url}>
+                <a className="now-cell" href={latest.merged.url}>
                   <span className="now-label">
                     <Icon name="git-merge" /> Latest merge
                   </span>
@@ -169,7 +160,7 @@ export default async function Home() {
                 </a>
               )}
               {latest.open && (
-                <a className="now-cell spot" href={latest.open.url}>
+                <a className="now-cell" href={latest.open.url}>
                   <span className="now-label">
                     <span className="live-dot" aria-hidden="true" /> In review
                   </span>
@@ -198,7 +189,7 @@ export default async function Home() {
               {library.tagline}
             </SectionHead>
 
-            <div className="showcase" data-reveal="">
+            <div className="showcase">
               <div className="showcase-copy">
                 <div className="meta-row">
                   <span className="tag tag-accent">v{snapshot.library.version}</span>
@@ -243,7 +234,7 @@ export default async function Home() {
                 </div>
               </div>
 
-              <div className="terminal" aria-label="Example Stampede run" data-reveal="">
+              <div className="terminal" aria-label="Example Stampede run">
                 <div className="terminal-bar">
                   <span />
                   <span />
@@ -300,10 +291,10 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="results" data-stagger="">
+            <div className="results">
               {library.results.map((r) => (
-                <div key={r.held} className="result spot">
-                  <p className="result-num" data-count="">
+                <div key={r.held} className="result">
+                  <p className="result-num">
                     {r.held}
                   </p>
                   <p className="result-unit">{r.unit}</p>
@@ -321,7 +312,7 @@ export default async function Home() {
               {infusion.tagline}
             </SectionHead>
 
-            <div className="showcase" data-reveal="">
+            <div className="showcase">
               <div className="showcase-copy">
                 <div className="meta-row">
                   <span className="tag tag-accent">v{snapshot.infusion.version}</span>
@@ -366,7 +357,7 @@ export default async function Home() {
                 </div>
               </div>
 
-              <div className="terminal" aria-label="Generating and using a GitHub SDK with Infusion" data-reveal="">
+              <div className="terminal" aria-label="Generating and using a GitHub SDK with Infusion">
                 <div className="terminal-bar">
                   <span />
                   <span />
@@ -417,10 +408,10 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="results" data-stagger="">
+            <div className="results">
               {infusion.results.map((r) => (
-                <div key={r.held} className="result spot">
-                  <p className="result-num" data-count="">
+                <div key={r.held} className="result">
+                  <p className="result-num">
                     {r.held}
                   </p>
                   <p className="result-unit">{r.unit}</p>
@@ -432,7 +423,7 @@ export default async function Home() {
 
             <div className="built" id="built-with-infusion">
               <h3 className="subhead">Built with Infusion</h3>
-              <article className="sdk-card spot" data-reveal="">
+              <article className="sdk-card">
                 <div className="sdk-copy">
                   <header className="sdk-head">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -490,7 +481,7 @@ export default async function Home() {
                   </div>
                 </div>
 
-                <div className="terminal sdk-terminal" aria-label="Sending a message with the Twilio SDK" data-reveal="">
+                <div className="terminal sdk-terminal" aria-label="Sending a message with the Twilio SDK">
                   <div className="terminal-bar">
                     <span />
                     <span />
@@ -558,9 +549,9 @@ export default async function Home() {
 
             <ContributionGraph calendar={calendar} />
 
-            <div className="highlights" data-stagger="">
+            <div className="highlights">
               {highlights.map((project) => (
-                <article key={project.name} className="project-card spot">
+                <article key={project.name} className="project-card">
                   <header className="project-head">
                     {project.logo && (
                       // eslint-disable-next-line @next/next/no-img-element
@@ -590,7 +581,7 @@ export default async function Home() {
                   <ul className="picks">
                     {project.highlights.map((item) => (
                       <li key={item.pr.url}>
-                        <a className="pick spot" href={item.pr.url}>
+                        <a className="pick" href={item.pr.url}>
                           <span className="pick-meta">
                             <span className="pr-ref">{prRef(item.pr)}</span>
                             <Status state={item.state} />
@@ -628,11 +619,11 @@ export default async function Home() {
         <section id="experience" className="section">
           <div className="container">
             <SectionHead eyebrow="Experience" title="Where I've worked" />
-            <ol className="timeline" data-stagger="">
+            <ol className="timeline">
               {experience.map((job) => (
                 <li key={job.role} className="timeline-item">
                   <span className="timeline-dot" aria-hidden="true" />
-                  <div className="card spot">
+                  <div className="card">
                     <header className="entry-head">
                       <div>
                         <h4>{job.role}</h4>
@@ -662,9 +653,9 @@ export default async function Home() {
         <section id="projects" className="section">
           <div className="container">
             <SectionHead eyebrow="Projects" title="Things I've built" />
-            <div className="project-grid" data-stagger="">
+            <div className="project-grid">
               {builds.map((project) => (
-                <article key={project.name} className="card build-card spot">
+                <article key={project.name} className="card build-card">
                   <header className="entry-head">
                     <div>
                       <h4>{project.name}</h4>
@@ -702,7 +693,7 @@ export default async function Home() {
         <section id="background" className="section">
           <div className="container">
             <SectionHead eyebrow="Background" title="Education and skills" />
-            <div className="background-grid" data-stagger="">
+            <div className="background-grid">
               <article className="card edu-card">
                 <p className="eyebrow">Education</p>
                 <h4>{education.school}</h4>
@@ -732,7 +723,7 @@ export default async function Home() {
 
         <section className="section">
           <div className="container">
-            <div className="cta" data-reveal="">
+            <div className="cta">
               <div>
                 <h2>
                   Let&apos;s <span>talk</span>

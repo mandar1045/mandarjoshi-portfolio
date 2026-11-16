@@ -11,7 +11,7 @@ export function ContributionGraph({ calendar }: { calendar: Calendar | null }) {
   const [bestDate, bestCount] = calendar.bestDay;
 
   return (
-    <figure className="contrib card" aria-labelledby="contrib-title" data-reveal="">
+    <figure className="contrib card" aria-labelledby="contrib-title">
       <figcaption className="chart-head">
         <div>
           <h3 id="contrib-title">{number(calendar.total)} contributions in the last year</h3>
