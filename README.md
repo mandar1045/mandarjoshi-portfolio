@@ -20,6 +20,12 @@ hash recognises repeat visitors. Bots are flagged and left out of the dashboard.
 and being signed in also stops your own visits from being counted. The table schema is in
 `supabase/migrations/`.
 
+The dashboard filters known internet, mobile, hosting, cloud and VPN providers out of
+the company summary and visitor table, including existing visits. Company sections
+appear only when a company name remains. This is a best-effort name filter, not a
+verified employer lookup: unfamiliar providers may still appear, and companies that
+also operate public networks may be hidden. The underlying visit log is unchanged.
+
 ## Running locally
 
 ```sh

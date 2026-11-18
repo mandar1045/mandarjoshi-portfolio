@@ -14,7 +14,7 @@ export type Person = {
   visits: number;
   location: string;
   country: string | null;
-  org: string | null;
+  company: string | null;
   source: string;
   device: string;
 };
@@ -38,6 +38,21 @@ function rank(visits: Visit[], key: (v: Visit) => string | null, limit = 8): Ran
 
 export const locationOf = (v: Pick<Visit, "city" | "region" | "country">) =>
   [v.city, v.country].filter(Boolean).join(", ") || "Unknown";
+
+// The lookup supplies an IP organization, not its industry. Hide recognizable
+// access, hosting and VPN providers; remaining names are only company hints.
+const PROVIDERS = [
+  /\b(?:internet|telecom\w*|teleservices|communications?|broadband|networks?|cable|wireless|fib(?:er|re)|cellular|mobile|hosting|cloud|datacent(?:er|re)|data cent(?:er|re)|vpn|proxy|proxies|isp)\b/i,
+  /\b(?:airtel|bharti|jio|reliance|vodafone|bsnl|mtnl|hathway|you ?broadband|tikona|excitel|asianet|railtel|sify|spectranet|act fibernet|atria convergence|beam|oneott)\b/i,
+  /\b(?:comcast|xfinity|charter|spectrum|verizon|at&t|t-mobile|sprint|centurylink|lumen|cox|frontier|optimum|altice|telefonica|movistar|orange|deutsche telekom|british telecommunications|bt group|virgin media|telstra|optus|rogers|shaw|bell canada|singtel|starhub|m1 limited|ntt|kddi|softbank|china unicom|china mobile|china telecom)\b/i,
+  /\b(?:amazon|aws|google|microsoft|cloudflare|fastly|akamai|digitalocean|hetzner|ovh\w*|linode|vultr|choopa|contabo|leaseweb|scaleway|m247|zscaler|nordvpn|expressvpn|surfshark|mullvad)\b/i,
+  /^(?:unknown|undefined|null|n\/?a|reserved|private)(?:\b|$)/i,
+];
+
+function companyOf(org: string | null): string | null {
+  const name = org?.trim();
+  return name && !PROVIDERS.some((provider) => provider.test(name)) ? name : null;
+}
 
 /** Everything the dashboard needs from the last 30 days of visits (newest first). */
 export function summarize(visits: Visit[], now = new Date()) {
@@ -73,7 +88,7 @@ export function summarize(visits: Visit[], now = new Date()) {
       visits: 1,
       location: locationOf(v),
       country: v.country,
-      org: v.org,
+      company: companyOf(v.org),
       source: v.source,
       device: [v.device, v.browser, v.os].filter(Boolean).join(" · "),
     });
@@ -86,7 +101,7 @@ export function summarize(visits: Visit[], now = new Date()) {
     days,
     sources: rank(visits, (v) => v.source),
     countries: rank(visits, (v) => v.country),
-    orgs: rank(visits, (v) => v.org),
+    companies: rank(visits, (v) => companyOf(v.org)),
     devices: rank(visits, (v) => v.device, 4),
     browsers: rank(visits, (v) => v.browser, 6),
     people: [...people.values()].slice(0, 100),

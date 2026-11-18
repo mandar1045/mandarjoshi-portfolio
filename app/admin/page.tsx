@@ -82,6 +82,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
   }
 
   const max = Math.max(1, ...data.days.map((d) => d.visits));
+  const hasCompanies = data.people.some((person) => person.company !== null);
 
   return (
     <Shell signedIn>
@@ -135,7 +136,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
       <div className="admin-grid">
         <List title="Came from" items={data.sources} />
         <List title="Countries" items={data.countries} code />
-        <List title="Companies and networks" items={data.orgs} empty="Shows up once visits are logged on Vercel" />
+        {data.companies.length > 0 && <List title="Companies" items={data.companies} />}
         <List title="Devices" items={data.devices} more={{ title: "Browsers", items: data.browsers }} />
       </div>
 
@@ -153,7 +154,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
                 <tr>
                   <th scope="col">Last seen</th>
                   <th scope="col">Location</th>
-                  <th scope="col">Company or network</th>
+                  {hasCompanies && <th scope="col" title="Company inferred from the IP organization; may not be the visitor's employer">Company</th>}
                   <th scope="col">Came from</th>
                   <th scope="col">Device</th>
                   <th scope="col" className="num">
@@ -168,7 +169,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
                     <td>
                       <Country code={p.country} /> {p.location}
                     </td>
-                    <td>{p.org ?? <span className="muted">Unknown</span>}</td>
+                    {hasCompanies && <td>{p.company ?? <span className="muted">—</span>}</td>}
                     <td>{p.source}</td>
                     <td className="muted">{p.device}</td>
                     <td className="num">

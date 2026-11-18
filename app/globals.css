@@ -446,7 +446,7 @@ a.now-cell:hover .now-main { color: var(--accent-text); }
 .admin-bar-fill em { position: absolute; bottom: calc(100% + 3px); left: 50%; transform: translateX(-50%); font-style: normal; font-size: 0.68rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 .admin-axis { display: flex; justify-content: space-between; font-size: 0.75rem; margin-top: 0.4rem; }
 
-.admin-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 1rem; }
 .admin-list { padding: 1.2rem 1.3rem; }
 .admin-list ol { list-style: none; padding: 0; margin: 0.8rem 0 0; display: grid; gap: 0.35rem; }
 .admin-list li {
